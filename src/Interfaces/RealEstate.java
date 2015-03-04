@@ -483,10 +483,7 @@ public class RealEstate extends javax.swing.JFrame {
        jTableEstateInfo.getColumnModel().getColumn(3).setPreferredWidth(55);
        jTableEstateInfo.getColumnModel().getColumn(4).setPreferredWidth(55);
        jTableEstateInfo.getColumnModel().getColumn(5).setPreferredWidth(60);      
-      // End, Table formatting
-       int n = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_OPTION);       
-       int n1 = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_NO_OPTION);
-       int n2 = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_NO_CANCEL_OPTION);
+      // End, Table formatting       
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
