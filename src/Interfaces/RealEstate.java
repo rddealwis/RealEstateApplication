@@ -7,6 +7,7 @@
 package Interfaces;
 
 import Classes.Button;
+import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
@@ -94,6 +95,8 @@ public class RealEstate extends javax.swing.JFrame {
                 "Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"
             }
         ));
+        jTableEstateInfo.setGridColor(new java.awt.Color(0, 204, 204));
+        jTableEstateInfo.setSelectionBackground(new java.awt.Color(0, 153, 204));
         jScrollPane1.setViewportView(jTableEstateInfo);
 
         jBtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -105,6 +108,11 @@ public class RealEstate extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnCloseMouseExited(evt);
+            }
+        });
+        jBtnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCloseActionPerformed(evt);
             }
         });
 
@@ -119,6 +127,11 @@ public class RealEstate extends javax.swing.JFrame {
                 jBtnAddMouseExited(evt);
             }
         });
+        jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAddActionPerformed(evt);
+            }
+        });
 
         jBtnSave.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnSave.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,6 +142,11 @@ public class RealEstate extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnSaveMouseExited(evt);
+            }
+        });
+        jBtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSaveActionPerformed(evt);
             }
         });
 
@@ -143,6 +161,11 @@ public class RealEstate extends javax.swing.JFrame {
                 jBtnResetMouseExited(evt);
             }
         });
+        jBtnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnResetActionPerformed(evt);
+            }
+        });
 
         jBtnClear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnClear.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,6 +176,11 @@ public class RealEstate extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnClearMouseExited(evt);
+            }
+        });
+        jBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnClearActionPerformed(evt);
             }
         });
 
@@ -167,6 +195,11 @@ public class RealEstate extends javax.swing.JFrame {
                 jBtnSearchMouseExited(evt);
             }
         });
+        jBtnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSearchActionPerformed(evt);
+            }
+        });
 
         jBtnDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnDelete.setForeground(new java.awt.Color(255, 255, 255));
@@ -177,6 +210,11 @@ public class RealEstate extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnDeleteMouseExited(evt);
+            }
+        });
+        jBtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnDeleteActionPerformed(evt);
             }
         });
 
@@ -191,6 +229,11 @@ public class RealEstate extends javax.swing.JFrame {
                 jBtnPrevMouseExited(evt);
             }
         });
+        jBtnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPrevActionPerformed(evt);
+            }
+        });
 
         jBtnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnNext.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,6 +244,11 @@ public class RealEstate extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jBtnNextMouseExited(evt);
+            }
+        });
+        jBtnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnNextActionPerformed(evt);
             }
         });
 
@@ -434,9 +482,49 @@ public class RealEstate extends javax.swing.JFrame {
        jTableEstateInfo.getColumnModel().getColumn(2).setPreferredWidth(100);
        jTableEstateInfo.getColumnModel().getColumn(3).setPreferredWidth(55);
        jTableEstateInfo.getColumnModel().getColumn(4).setPreferredWidth(55);
-       jTableEstateInfo.getColumnModel().getColumn(5).setPreferredWidth(60);
+       jTableEstateInfo.getColumnModel().getColumn(5).setPreferredWidth(60);      
       // End, Table formatting
+       int n = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_OPTION);       
+       int n1 = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_NO_OPTION);
+       int n2 = JOptionPane.showConfirmDialog(this,"Would you like green eggs and ham?","An Inane Question",JOptionPane.YES_NO_CANCEL_OPTION);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnAddActionPerformed
+
+    private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnSaveActionPerformed
+
+    private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnResetActionPerformed
+
+    private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnClearActionPerformed
+
+    private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
+      SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
+      ob.show();
+    }//GEN-LAST:event_jBtnSearchActionPerformed
+
+    private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnDeleteActionPerformed
+
+    private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnPrevActionPerformed
+
+    private void jBtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnNextActionPerformed
+
+    private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnCloseActionPerformed
 
     /**
      * @param args the command line arguments
