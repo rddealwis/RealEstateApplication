@@ -7,9 +7,22 @@
 package Interfaces;
 
 import Classes.Button;
+import Classes.HouseFile;
+import java.io.File;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import Classes.ListHouse.*;
+import Classes.SortedList.*;
+import Classes.List.*;
+import Classes.ListHouse;
+import Classes.SortedList;
 
 /**
  *
@@ -20,8 +33,12 @@ public class RealEstate extends javax.swing.JFrame {
     /**
      * Creates new form RealEstate
      */
+    private String path= "file.xml";
+    
+    private static SortedList list = new SortedList();
     public RealEstate() {
         initComponents();
+        loadTheXMLFile();
     }
 
     /**
@@ -504,7 +521,7 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
       SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
-      ob.show();
+      ob.setVisible(true);
     }//GEN-LAST:event_jBtnSearchActionPerformed
 
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
@@ -578,4 +595,48 @@ public class RealEstate extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtPrice;
     private javax.swing.JTextField jTxtSqFeet;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTheXMLFile() {
+        ListHouse house;
+        
+    try {
+ 
+	File fXmlFile = new File(path);
+	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	Document doc = dBuilder.parse(fXmlFile);
+ 
+	doc.getDocumentElement().normalize();
+ 
+	System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+ 
+	NodeList nList = doc.getElementsByTagName("Employee");
+ 
+	
+ for (int temp = 0; temp < nList.getLength(); temp++) {
+ 
+		Node nNode = nList.item(temp);
+ 
+		//JOptionPane.showMessageDialog(rootPane,"\nCurrent Element :" + nNode.getNodeName());
+ 
+		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+ 
+			Element eElement = (Element) nNode;
+                        String xmlValue="\nStaff id : " + eElement.getAttribute("id")+
+                                "\nName : " + eElement.getElementsByTagName("name").item(0).getTextContent()+
+                                "\nAge : " + eElement.getElementsByTagName("age").item(0).getTextContent()+
+                                "\nRole : " + eElement.getElementsByTagName("role").item(0).getTextContent()+
+                                "\nGender : " + eElement.getElementsByTagName("gender").item(0).getTextContent();
+                          house = HouseFile.getNextHouse(nNode);
+                          list.insert(house);      
+//			JOptionPane.showMessageDialog(rootPane,xmlValue);
+                            
+		}
+	}
+    } catch (Exception e) {
+	JOptionPane.showMessageDialog(rootPane,e.getMessage());
+    }
+    
+    }
+    
 }
