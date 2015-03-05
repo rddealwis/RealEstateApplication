@@ -23,7 +23,11 @@ import Classes.ListHouse.*;
 import Classes.SortedList.*;
 import Classes.ListHouse;
 import Classes.SortedList;
+import java.awt.Component;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -518,6 +522,14 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
         // TODO add your handling code here:
+    jTxtFirstName.setText("");
+    jTxtLastName.setText("");
+    jTxtLotNo.setText("");
+    jTxtNoOfBedrooms.setText("");
+    jTxtPrice.setText("");
+    jTxtSqFeet.setText("");
+    DefaultTableModel model = (DefaultTableModel) jTableEstateInfo.getModel();
+    model.setRowCount(0);
     }//GEN-LAST:event_jBtnClearActionPerformed
 
     private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
