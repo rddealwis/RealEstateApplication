@@ -530,10 +530,14 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
         // TODO add your handling code here:
+        ListHouse house = (ListHouse) list.getPreviousItem();
+            showHouse(house);
     }//GEN-LAST:event_jBtnPrevActionPerformed
 
     private void jBtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNextActionPerformed
         // TODO add your handling code here:
+        ListHouse house = (ListHouse) list.getNextItem();
+            showHouse(house);
     }//GEN-LAST:event_jBtnNextActionPerformed
 
     private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
@@ -633,9 +637,23 @@ public class RealEstate extends javax.swing.JFrame {
                             
 		}
 	}
+ 
+            house = (ListHouse) list.getNextItem();
+            showHouse(house);
+            
     } catch (Exception e) {
 	JOptionPane.showMessageDialog(rootPane,e.getMessage());
     }
+    
+    }
+
+    private void showHouse(ListHouse house) {
+        jTxtLotNo.setText(Integer.toString(house.lotNumber()));
+        jTxtFirstName.setText(house.firstName());
+        jTxtLastName.setText(house.lastName());
+        jTxtPrice.setText(house.price());
+        jTxtSqFeet.setText(house.squareFeet());
+        jTxtNoOfBedrooms.setText(house.bedRooms());   
     
     }
     

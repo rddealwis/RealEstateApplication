@@ -60,4 +60,19 @@ public abstract class List {
         }
         return next.copy();
     }
+    public Listable getPreviousItem() // Returns copy of the next element on this list 
+    {
+        Listable next = list[currentPos];
+        if (currentPos == numItems - 1 ) {
+            currentPos = 0;
+        } 
+        else if (currentPos==0)
+        {
+        currentPos=numItems - 1;
+        }
+        else {
+            currentPos--;
+        }
+        return next.copy();
+    }
 }
