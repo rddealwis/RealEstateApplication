@@ -8,6 +8,7 @@ package Interfaces;
 
 import Classes.Button;
 import Classes.HouseFile;
+import Classes.List;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
@@ -20,9 +21,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import Classes.ListHouse.*;
 import Classes.SortedList.*;
-import Classes.List.*;
 import Classes.ListHouse;
 import Classes.SortedList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -542,6 +543,7 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jBtnCloseActionPerformed
 
     /**
@@ -625,13 +627,7 @@ public class RealEstate extends javax.swing.JFrame {
  
 		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
  
-			Element eElement = (Element) nNode;
-                        String xmlValue="\nStaff id : " + eElement.getAttribute("id")+
-                                "\nName : " + eElement.getElementsByTagName("name").item(0).getTextContent()+
-                                "\nAge : " + eElement.getElementsByTagName("age").item(0).getTextContent()+
-                                "\nRole : " + eElement.getElementsByTagName("role").item(0).getTextContent()+
-                                "\nGender : " + eElement.getElementsByTagName("gender").item(0).getTextContent();
-                          house = HouseFile.getNextHouse(nNode);
+			house = HouseFile.getNextHouse(nNode);
                           list.insert(house);      
 //			JOptionPane.showMessageDialog(rootPane,xmlValue);
                             
@@ -640,6 +636,12 @@ public class RealEstate extends javax.swing.JFrame {
  
             house = (ListHouse) list.getNextItem();
             showHouse(house);
+            
+            PopulateTheTable();
+            
+            
+            
+            
             
     } catch (Exception e) {
 	JOptionPane.showMessageDialog(rootPane,e.getMessage());
@@ -654,6 +656,28 @@ public class RealEstate extends javax.swing.JFrame {
         jTxtPrice.setText(house.price());
         jTxtSqFeet.setText(house.squareFeet());
         jTxtNoOfBedrooms.setText(house.bedRooms());   
+    
+    }
+
+    private void PopulateTheTable() {
+        ListHouse house;
+        int count=0;
+        Object[] columnNames = {"Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"};
+        DefaultTableModel model = new DefaultTableModel(new Object[0][0], columnNames);
+        while (count<=list.lengthIs() - 1) {
+            Object[] o = new Object[6];
+            house = (ListHouse) list.getNextItem();
+            
+            o[0] = Integer.toString(house.lotNumber());
+            o[1] = (house.firstName());
+            o[2] = (house.lastName());
+            o[3] = (house.price());
+            o[4] = (house.squareFeet());
+            o[5] = (house.bedRooms());
+            model.addRow(o);
+            count++;
+        }
+        jTableEstateInfo.setModel(model);
     
     }
     
