@@ -41,6 +41,7 @@ public class RealEstate extends javax.swing.JFrame {
     private String path= "file.xml";
     
     private static SortedList list = new SortedList();
+    private ListHouse house;
     public RealEstate() {
         initComponents();
         loadTheXMLFile();
@@ -518,6 +519,9 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
         // TODO add your handling code here:
+        list.reset();
+        house = (ListHouse) list.getNextItem();
+            showHouse(house);
     }//GEN-LAST:event_jBtnResetActionPerformed
 
     private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
