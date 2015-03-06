@@ -501,7 +501,6 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
-        // TODO add your handling code here:
         jTxtFirstName.setText("");
         jTxtLastName.setText("");
         jTxtLotNo.setText("");
@@ -512,7 +511,6 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAddActionPerformed
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
-       // TODO add your handling code here:
        try {
           house = getHouse();
           if (list.isThere(house)) {
@@ -529,14 +527,12 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSaveActionPerformed
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
-       // TODO add your handling code here:
        list.reset();
        house = (ListHouse) list.getNextItem();
        showHouse(house);
     }//GEN-LAST:event_jBtnResetActionPerformed
 
     private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
-       // TODO add your handling code here:
        jTxtFirstName.setText("");
        jTxtLastName.setText("");
        jTxtLotNo.setText("");
@@ -570,7 +566,6 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSearchActionPerformed
 
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-       // TODO add your handling code here:
        try {
           house = getHouse();
           if (list.isThere(house)) {
@@ -587,19 +582,16 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
     private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
-       // TODO add your handling code here:
        ListHouse house = (ListHouse) list.getPreviousItem();
        showHouse(house);
     }//GEN-LAST:event_jBtnPrevActionPerformed
 
     private void jBtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNextActionPerformed
-       // TODO add your handling code here:
        ListHouse house = (ListHouse) list.getNextItem();
        showHouse(house);
     }//GEN-LAST:event_jBtnNextActionPerformed
 
     private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
-       // TODO add your handling code here:
        this.dispose();
     }//GEN-LAST:event_jBtnCloseActionPerformed
 

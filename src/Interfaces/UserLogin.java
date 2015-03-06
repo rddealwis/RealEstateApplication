@@ -8,8 +8,7 @@ package Interfaces;
 
 import Classes.General.Button;
 import Classes.RealEstate.*;
-import Classes.UserLogin.ListUserLogin;
-import Classes.UserLogin.UserLoginFile;
+import Classes.UserLogin.*;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.*;
@@ -33,6 +32,7 @@ public class UserLogin extends javax.swing.JFrame {
    public UserLogin() 
    {
       initComponents();
+      this.setResizable(false);
       loadTheXMLFile();
    }
 
@@ -220,7 +220,7 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnLoginActionPerformed
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
-        // TODO add your handling code here:
+      this.dispose();
     }//GEN-LAST:event_jBtnCancelActionPerformed
 
     private void jBtnAddUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAddUserMouseEntered
@@ -234,7 +234,8 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAddUserMouseExited
 
     private void jBtnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddUserActionPerformed
-        // TODO add your handling code here:
+      AddNewUser ob = new AddNewUser();
+      ob.setVisible(true);
     }//GEN-LAST:event_jBtnAddUserActionPerformed
 
     /**
@@ -299,13 +300,11 @@ public class UserLogin extends javax.swing.JFrame {
 
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                userLogin = UserLoginFile.getNextUserLogin(nNode);
-               JOptionPane.showMessageDialog(rootPane, ":()");
                list.insert(userLogin);
             }
          }
 
       } catch (Exception e) {
-          JOptionPane.showMessageDialog(rootPane, ":(");
          JOptionPane.showMessageDialog(rootPane, e.getMessage());
       }
    }
