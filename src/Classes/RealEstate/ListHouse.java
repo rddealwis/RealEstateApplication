@@ -3,7 +3,7 @@
 //
 // Provides elements for a list of house information
 //----------------------------------------------------------------------------
-package Classes;
+package Classes.RealEstate;
 
 public class ListHouse implements Listable {
 // House information

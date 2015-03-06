@@ -3,7 +3,7 @@
 //
 // Manages file "houses.dat" of real estate information
 //----------------------------------------------------------------------------
-package Classes;
+package Classes.RealEstate;
 
 import java.io.*;
 import org.w3c.dom.*;
@@ -63,14 +63,15 @@ public class HouseFile // Manages file "houses.dat" of real estate information
         String squareFeet = "xxxxx";
         String bedRooms = "xxxxx";
         Element eElement = (Element) nNode;
+        
         lastName = eElement.getAttribute("id");
         firstName = eElement.getElementsByTagName("name").item(0).getTextContent();
         lotNumber = Integer.parseInt(eElement.getElementsByTagName("age").item(0).getTextContent());
         price = eElement.getElementsByTagName("age").item(0).getTextContent();
         squareFeet = eElement.getElementsByTagName("gender").item(0).getTextContent();
         bedRooms = eElement.getElementsByTagName("name").item(0).getTextContent();
-        ListHouse house = new ListHouse(lastName, firstName, lotNumber, price,
-                squareFeet, bedRooms);
+        
+        ListHouse house = new ListHouse(lastName, firstName, lotNumber, price,squareFeet, bedRooms);
         
         
         

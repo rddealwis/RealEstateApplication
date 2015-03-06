@@ -4,7 +4,9 @@
 // Completes the definition of the List class under the assumption
 // that the list is kept sorted
 //----------------------------------------------------------------------------
-package Classes;
+package Classes.RealEstate;
+
+import javax.swing.JOptionPane;
 
 public class SortedList extends List {
 
@@ -73,20 +75,26 @@ public class SortedList extends List {
     public void insert(Listable item) // Adds a copy of item to this list
     {
         int location = 0;
+        numItems = 2;
         boolean moreToSearch = (location < numItems);
+        JOptionPane.showMessageDialog(null, moreToSearch);
         while (moreToSearch) {
             if (item.compareTo(list[location]) < 0) // item is less
             {
                 moreToSearch = false;
+                JOptionPane.showMessageDialog(null, "1111111");
             } else // item is more
             {
                 location++;
                 moreToSearch = (location < numItems);
+                JOptionPane.showMessageDialog(null, "222222222");
             }
         }
         for (int index = numItems; index > location; index--) {
+            JOptionPane.showMessageDialog(null, "for");
             list[index] = list[index - 1];
         }
+        JOptionPane.showMessageDialog(null, "after for");
         list[location] = item.copy();
         numItems++;
     }

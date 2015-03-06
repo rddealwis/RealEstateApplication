@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package Classes.UserLogin;
 
 import java.io.IOException;
 import org.w3c.dom.*;
@@ -15,7 +15,7 @@ import org.w3c.dom.*;
 public class UserLoginFile {
    
    public static ListUserLogin getNextUserLogin(Node nNode) throws IOException // Gets and returns user login information from the user login details file
-    // Precondition: inFile is open and holds more user login information
+                                                                               // Precondition: inFile is open and holds more user login information
     {        
       int loginId = 0;
       String userName = "xxxxx";
@@ -26,9 +26,9 @@ public class UserLoginFile {
       userName = eElement.getElementsByTagName("UserName").item(0).getTextContent();
       password = eElement.getElementsByTagName("Password").item(0).getTextContent();
 
-      ListUserLogin house = new ListUserLogin(loginId, userName, password);
+      ListUserLogin userLogin = new ListUserLogin(loginId, userName, password);
 
-      return house;
+      return userLogin;
    }
 
 }

@@ -6,6 +6,8 @@
 
 package Interfaces;
 
+import Classes.General.Button;
+import Classes.RealEstate.*;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.*;
@@ -13,7 +15,6 @@ import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import javax.swing.table.DefaultTableModel;
 import org.w3c.dom.*;
-import Classes.*;
 
 /**
  *
@@ -31,7 +32,6 @@ public class RealEstate extends javax.swing.JFrame {
     
     public RealEstate() 
     {
-        this.setLocationRelativeTo(null);
         initComponents();
         loadTheXMLFile();
     }
@@ -382,6 +382,7 @@ public class RealEstate extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAddMouseEntered
@@ -547,11 +548,7 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnClearActionPerformed
 
     private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
-      //SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
-       //ob.setVisible(true);
-      /*String test3= JOptionPane.showInputDialog("Please input mark for test 3: ");
-
-        int int1 = Integer.parseInt(test1);*/
+      
        int lotNumber;
        
        try {

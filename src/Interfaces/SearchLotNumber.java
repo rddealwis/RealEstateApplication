@@ -6,7 +6,7 @@
 
 package Interfaces;
 
-import Classes.Button;
+import Classes.General.Button;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
