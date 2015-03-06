@@ -43,6 +43,7 @@ public class RealEstate extends javax.swing.JFrame {
     private static SortedList list = new SortedList();
     private ListHouse house;
     public RealEstate() {
+        this.setLocationRelativeTo(null);
         initComponents();
         loadTheXMLFile();
     }
@@ -507,6 +508,7 @@ public class RealEstate extends javax.swing.JFrame {
        jTableEstateInfo.getColumnModel().getColumn(4).setPreferredWidth(55);
        jTableEstateInfo.getColumnModel().getColumn(5).setPreferredWidth(60);      
       // End, Table formatting       
+       
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
