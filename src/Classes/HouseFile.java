@@ -6,8 +6,7 @@
 package Classes;
 
 import java.io.*;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 
 public class HouseFile // Manages file "houses.dat" of real estate information
 {
@@ -17,7 +16,7 @@ public class HouseFile // Manages file "houses.dat" of real estate information
     private static boolean inFileOpen = false;
     private static boolean outFileOpen = false;
     private static String inString = ""; // Holds "next" line from file
-// Equals null if at end of file
+                                         // Equals null if at end of file
 
     public static void reset() throws IOException // Reset file for reading
     {

@@ -6,28 +6,14 @@
 
 package Interfaces;
 
-import Classes.Button;
-import Classes.HouseFile;
-import Classes.List;
 import java.io.File;
 import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.*;
 import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import Classes.ListHouse.*;
-import Classes.SortedList.*;
-import Classes.ListHouse;
-import Classes.SortedList;
-import java.awt.Component;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
+import org.w3c.dom.*;
+import Classes.*;
 
 /**
  *
@@ -42,7 +28,9 @@ public class RealEstate extends javax.swing.JFrame {
     
     private static SortedList list = new SortedList();
     private ListHouse house;
-    public RealEstate() {
+    
+    public RealEstate() 
+    {
         this.setLocationRelativeTo(null);
         initComponents();
         loadTheXMLFile();
@@ -523,127 +511,129 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAddActionPerformed
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
-        // TODO add your handling code here:
-        try {
-                    house = getHouse();
-                    if (list.isThere(house)) {
-                       JOptionPane.showMessageDialog(rootPane,"Lot number already in use");
-                    } else {
-                        list.insert(house);
-                        JOptionPane.showMessageDialog(rootPane,"House added to list");
-                        PopulateTheTable();
-                    }
-                } catch (NumberFormatException badHouseData) {
-// Text field info incorrectly formated
-                    JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
-                }
+       // TODO add your handling code here:
+       try {
+          house = getHouse();
+          if (list.isThere(house)) {
+             JOptionPane.showMessageDialog(rootPane, "Lot number already in use");
+          } else {
+             list.insert(house);
+             JOptionPane.showMessageDialog(rootPane, "House added to list");
+             PopulateTheTable();
+          }
+       } catch (NumberFormatException badHouseData) {
+            // Text field info incorrectly formated
+          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+       }
     }//GEN-LAST:event_jBtnSaveActionPerformed
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
-        // TODO add your handling code here:
-        list.reset();
-        house = (ListHouse) list.getNextItem();
-            showHouse(house);
+       // TODO add your handling code here:
+       list.reset();
+       house = (ListHouse) list.getNextItem();
+       showHouse(house);
     }//GEN-LAST:event_jBtnResetActionPerformed
 
     private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
-        // TODO add your handling code here:
-        jTxtFirstName.setText("");
-        jTxtLastName.setText("");
-        jTxtLotNo.setText("");
-        jTxtNoOfBedrooms.setText("");
-        jTxtPrice.setText("");
-        jTxtSqFeet.setText("");
-        DefaultTableModel model = (DefaultTableModel) jTableEstateInfo.getModel();
-        model.setRowCount(0);
+       // TODO add your handling code here:
+       jTxtFirstName.setText("");
+       jTxtLastName.setText("");
+       jTxtLotNo.setText("");
+       jTxtNoOfBedrooms.setText("");
+       jTxtPrice.setText("");
+       jTxtSqFeet.setText("");
+       DefaultTableModel model = (DefaultTableModel) jTableEstateInfo.getModel();
+       model.setRowCount(0);
     }//GEN-LAST:event_jBtnClearActionPerformed
 
     private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
       //SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
-      //ob.setVisible(true);
+       //ob.setVisible(true);
       /*String test3= JOptionPane.showInputDialog("Please input mark for test 3: ");
 
         int int1 = Integer.parseInt(test1);*/
-      int lotNumber;
-                try {
-                    lotNumber= Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
-                    
-                    house = new ListHouse("", "", lotNumber, "0", "0", "0");
-                    if (list.isThere(house)) {
-                        house = (ListHouse) list.retrieve(house);
-                        showHouse(house);
-                         JOptionPane.showMessageDialog(rootPane,"House found");
-                    } else {
-                         JOptionPane.showMessageDialog(rootPane,"House not found");
-                    }
-                } catch (NumberFormatException badHouseData) {
-// Text field info incorrectly formated
-                     JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
-                }
+       int lotNumber;
+       
+       try {
+          lotNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
+
+          house = new ListHouse("", "", lotNumber, "0", "0", "0");
+          
+          if (list.isThere(house)) {
+             house = (ListHouse) list.retrieve(house);
+             showHouse(house);
+             JOptionPane.showMessageDialog(rootPane, "House found");
+          } else {
+             JOptionPane.showMessageDialog(rootPane, "House not found");
+          }
+       } catch (NumberFormatException badHouseData) {
+            // Text field info incorrectly formated
+          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+       }
     }//GEN-LAST:event_jBtnSearchActionPerformed
 
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
-        // TODO add your handling code here:
-        try {
-                    house = getHouse();
-                    if (list.isThere(house)) {
-                        list.delete(house);
-                        JOptionPane.showMessageDialog(rootPane,"House deleted");
-                        PopulateTheTable();
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane,"Lot number not on list");
-                    }
-                } catch (NumberFormatException badHouseData) {
-// Text field info incorrectly formated
-                    JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
-                }
+       // TODO add your handling code here:
+       try {
+          house = getHouse();
+          if (list.isThere(house)) {
+             list.delete(house);
+             JOptionPane.showMessageDialog(rootPane, "House deleted");
+             PopulateTheTable();
+          } else {
+             JOptionPane.showMessageDialog(rootPane, "Lot number not on list");
+          }
+       } catch (NumberFormatException badHouseData) {
+            // Text field info incorrectly formated
+          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+       }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
     private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
-        // TODO add your handling code here:
-        ListHouse house = (ListHouse) list.getPreviousItem();
-            showHouse(house);
+       // TODO add your handling code here:
+       ListHouse house = (ListHouse) list.getPreviousItem();
+       showHouse(house);
     }//GEN-LAST:event_jBtnPrevActionPerformed
 
     private void jBtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNextActionPerformed
-        // TODO add your handling code here:
-        ListHouse house = (ListHouse) list.getNextItem();
-            showHouse(house);
+       // TODO add your handling code here:
+       ListHouse house = (ListHouse) list.getNextItem();
+       showHouse(house);
     }//GEN-LAST:event_jBtnNextActionPerformed
 
     private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+       // TODO add your handling code here:
+       this.dispose();
     }//GEN-LAST:event_jBtnCloseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+   /**
+    * @param args the command line arguments
+    */
+   public static void main(String args[]) {
+      /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        
-        try {
-            BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+       * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+       */
 
-            javax.swing.UIManager.setLookAndFeel("org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin");
-            javax.swing.UIManager.put("RootPane.setupButtonVisible", false);
+      try {
+         BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
 
-        } catch (javax.swing.UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RealEstate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+         javax.swing.UIManager.setLookAndFeel("org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin");
+         javax.swing.UIManager.put("RootPane.setupButtonVisible", false);
+
+      } catch (javax.swing.UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+         java.util.logging.Logger.getLogger(RealEstate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+      }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RealEstate().setVisible(true);
-            }
-        });
-    }
+      /* Create and display the form */
+      java.awt.EventQueue.invokeLater(new Runnable() {
+         public void run() {
+            new RealEstate().setVisible(true);
+         }
+      });
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
@@ -672,102 +662,97 @@ public class RealEstate extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtSqFeet;
     // End of variables declaration//GEN-END:variables
 
-    private void loadTheXMLFile() {
-        ListHouse house;
-        
-    try {
- 
-	File fXmlFile = new File(path);
-	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(fXmlFile);
- 
-	doc.getDocumentElement().normalize();
- 
-	System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
- 
-	NodeList nList = doc.getElementsByTagName("Employee");
- 
-	
- for (int temp = 0; temp < nList.getLength(); temp++) {
- 
-		Node nNode = nList.item(temp);
- 
-		//JOptionPane.showMessageDialog(rootPane,"\nCurrent Element :" + nNode.getNodeName());
- 
-		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
- 
-			house = HouseFile.getNextHouse(nNode);
-                          list.insert(house);      
-//			JOptionPane.showMessageDialog(rootPane,xmlValue);
-                            
-		}
-	}
- 
-            house = (ListHouse) list.getNextItem();
-            showHouse(house);
-            
-            PopulateTheTable();
-            
-            
-            
-            
-            
-    } catch (Exception e) {
-	JOptionPane.showMessageDialog(rootPane,e.getMessage());
-    }
-    
-    }
+   private void loadTheXMLFile() 
+   {
+      ListHouse house;
 
-    private void showHouse(ListHouse house) {
-        jTxtLotNo.setText(Integer.toString(house.lotNumber()));
-        jTxtFirstName.setText(house.firstName());
-        jTxtLastName.setText(house.lastName());
-        jTxtPrice.setText(house.price());
-        jTxtSqFeet.setText(house.squareFeet());
-        jTxtNoOfBedrooms.setText(house.bedRooms());   
-    
-    }
+      try {
+         File fXmlFile = new File(path);
+         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+         Document doc = dBuilder.parse(fXmlFile);
 
-    private void PopulateTheTable() {
-        ListHouse house;
-        int count=0;
-        Object[] columnNames = {"Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"};
-        DefaultTableModel model = new DefaultTableModel(new Object[0][0], columnNames);
-        while (count<=list.lengthIs() - 1) {
-            Object[] o = new Object[6];
-            house = (ListHouse) list.getNextItem();
-            
-            o[0] = Integer.toString(house.lotNumber());
-            o[1] = (house.firstName());
-            o[2] = (house.lastName());
-            o[3] = (house.price());
-            o[4] = (house.squareFeet());
-            o[5] = (house.bedRooms());
-            model.addRow(o);
-            count++;
-        }
-        jTableEstateInfo.setModel(model);
-    
-    }
+         doc.getDocumentElement().normalize();
 
-    private ListHouse getHouse() {
-        String lastName;
-        String firstName;
-        int lotNumber;
-        String price;
-        String squareFeet;
-        String bedRooms;
-        lotNumber = Integer.parseInt(jTxtLotNo.getText());
-        firstName = jTxtFirstName.getText();
-        lastName = jTxtLastName.getText();
-        price = jTxtPrice.getText();
-        squareFeet = jTxtSqFeet.getText();
-        bedRooms = jTxtNoOfBedrooms.getText();
-        ListHouse house = new ListHouse(lastName, firstName, lotNumber, price,
-                squareFeet, bedRooms);
-        return house;
-        
-    }
-    
+         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+         NodeList nList = doc.getElementsByTagName("Employee");
+
+         for (int temp = 0; temp < nList.getLength(); temp++) {
+
+            Node nNode = nList.item(temp);
+
+               //JOptionPane.showMessageDialog(rootPane,"\nCurrent Element :" + nNode.getNodeName());
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+               house = HouseFile.getNextHouse(nNode);
+               list.insert(house);
+               //			JOptionPane.showMessageDialog(rootPane,xmlValue);
+            }
+         }
+
+         house = (ListHouse) list.getNextItem();
+         showHouse(house);
+
+         PopulateTheTable();
+
+      } catch (Exception e) {
+         JOptionPane.showMessageDialog(rootPane, e.getMessage());
+      }    
+   }
+
+   private void showHouse(ListHouse house) 
+   {
+      jTxtLotNo.setText(Integer.toString(house.lotNumber()));
+      jTxtFirstName.setText(house.firstName());
+      jTxtLastName.setText(house.lastName());
+      jTxtPrice.setText(house.price());
+      jTxtSqFeet.setText(house.squareFeet());
+      jTxtNoOfBedrooms.setText(house.bedRooms());
+   }
+
+   private void PopulateTheTable() 
+   {
+      ListHouse house;
+      int count = 0;
+      
+      Object[] columnNames = {"Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"};
+      DefaultTableModel model = new DefaultTableModel(new Object[0][0], columnNames);
+      
+      while (count <= list.lengthIs() - 1) 
+      {
+         Object[] o = new Object[6];
+         house = (ListHouse) list.getNextItem();
+
+         o[0] = Integer.toString(house.lotNumber());
+         o[1] = (house.firstName());
+         o[2] = (house.lastName());
+         o[3] = (house.price());
+         o[4] = (house.squareFeet());
+         o[5] = (house.bedRooms());
+         model.addRow(o);
+         count++;
+      }
+      jTableEstateInfo.setModel(model);
+   }
+
+   private ListHouse getHouse() 
+   {
+      String lastName;
+      String firstName;
+      int lotNumber;
+      String price;
+      String squareFeet;
+      String bedRooms;
+      
+      lotNumber = Integer.parseInt(jTxtLotNo.getText());
+      firstName = jTxtFirstName.getText();
+      lastName = jTxtLastName.getText();
+      price = jTxtPrice.getText();
+      squareFeet = jTxtSqFeet.getText();
+      bedRooms = jTxtNoOfBedrooms.getText();
+      
+      ListHouse house = new ListHouse(lastName, firstName, lotNumber, price, squareFeet, bedRooms);
+      
+      return house;
+   }
 }

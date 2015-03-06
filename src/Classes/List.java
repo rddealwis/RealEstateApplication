@@ -12,11 +12,10 @@ package Classes;
 public abstract class List {
 
     protected Listable[] list;          // Array to hold this list’s elements
-    public int numItems;             // Number of elements on this list
+    public int numItems;               // Number of elements on this list
     protected int currentPos;           // Current position for iteration
 
-    public List(int maxItems) // Instantiates and returns a reference to an empty list object 
-    // with room for maxItems elements
+    public List(int maxItems) // Instantiates and returns a reference to an empty list object with room for maxItems elements
     {
         numItems = 0;
         list = new Listable[maxItems];

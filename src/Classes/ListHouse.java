@@ -5,8 +5,6 @@
 //----------------------------------------------------------------------------
 package Classes;
 
-import Classes.SortedList.*;
-
 public class ListHouse implements Listable {
 // House information
 
@@ -17,8 +15,8 @@ public class ListHouse implements Listable {
     private String squareFeet;
     private String bedRooms;
 
-    public ListHouse(String lastName, String firstName, int lotNumber,
-            String price, String squareFeet, String bedRooms) {
+    public ListHouse(String lastName, String firstName, int lotNumber, String price, String squareFeet, String bedRooms) 
+    {
         this.lastName = lastName;
         this.firstName = firstName;
         this.lotNumber = lotNumber;
@@ -29,8 +27,7 @@ public class ListHouse implements Listable {
 
     public Listable copy() // Returns a copy of this ListHouse
     {
-        ListHouse result = new ListHouse(lastName, firstName, lotNumber, price,
-                squareFeet, bedRooms);
+        ListHouse result = new ListHouse(lastName, firstName, lotNumber, price, squareFeet, bedRooms);
         return result;
     }
 
