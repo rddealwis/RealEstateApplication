@@ -511,10 +511,30 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
         // TODO add your handling code here:
+        jTxtFirstName.setText("");
+        jTxtLastName.setText("");
+        jTxtLotNo.setText("");
+        jTxtNoOfBedrooms.setText("");
+        jTxtPrice.setText("");
+        jTxtSqFeet.setText("");
+        
     }//GEN-LAST:event_jBtnAddActionPerformed
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
         // TODO add your handling code here:
+        try {
+                    house = getHouse();
+                    if (list.isThere(house)) {
+                       JOptionPane.showMessageDialog(rootPane,"Lot number already in use");
+                    } else {
+                        list.insert(house);
+                        JOptionPane.showMessageDialog(rootPane,"House added to list");
+                        PopulateTheTable();
+                    }
+                } catch (NumberFormatException badHouseData) {
+// Text field info incorrectly formated
+                    JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
+                }
     }//GEN-LAST:event_jBtnSaveActionPerformed
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
@@ -526,23 +546,55 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClearActionPerformed
         // TODO add your handling code here:
-    jTxtFirstName.setText("");
-    jTxtLastName.setText("");
-    jTxtLotNo.setText("");
-    jTxtNoOfBedrooms.setText("");
-    jTxtPrice.setText("");
-    jTxtSqFeet.setText("");
-    DefaultTableModel model = (DefaultTableModel) jTableEstateInfo.getModel();
-    model.setRowCount(0);
+        jTxtFirstName.setText("");
+        jTxtLastName.setText("");
+        jTxtLotNo.setText("");
+        jTxtNoOfBedrooms.setText("");
+        jTxtPrice.setText("");
+        jTxtSqFeet.setText("");
+        DefaultTableModel model = (DefaultTableModel) jTableEstateInfo.getModel();
+        model.setRowCount(0);
     }//GEN-LAST:event_jBtnClearActionPerformed
 
     private void jBtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSearchActionPerformed
-      SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
-      ob.setVisible(true);
+      //SearchLotNumber ob = new SearchLotNumber(this, rootPaneCheckingEnabled);
+      //ob.setVisible(true);
+      /*String test3= JOptionPane.showInputDialog("Please input mark for test 3: ");
+
+        int int1 = Integer.parseInt(test1);*/
+      int lotNumber;
+                try {
+                    lotNumber= Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
+                    
+                    house = new ListHouse("", "", lotNumber, "0", "0", "0");
+                    if (list.isThere(house)) {
+                        house = (ListHouse) list.retrieve(house);
+                        showHouse(house);
+                         JOptionPane.showMessageDialog(rootPane,"House found");
+                    } else {
+                         JOptionPane.showMessageDialog(rootPane,"House not found");
+                    }
+                } catch (NumberFormatException badHouseData) {
+// Text field info incorrectly formated
+                     JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
+                }
     }//GEN-LAST:event_jBtnSearchActionPerformed
 
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
         // TODO add your handling code here:
+        try {
+                    house = getHouse();
+                    if (list.isThere(house)) {
+                        list.delete(house);
+                        JOptionPane.showMessageDialog(rootPane,"House deleted");
+                        PopulateTheTable();
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane,"Lot number not on list");
+                    }
+                } catch (NumberFormatException badHouseData) {
+// Text field info incorrectly formated
+                    JOptionPane.showMessageDialog(rootPane,"Number? " + badHouseData.getMessage());
+                }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
     private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
@@ -695,6 +747,25 @@ public class RealEstate extends javax.swing.JFrame {
         }
         jTableEstateInfo.setModel(model);
     
+    }
+
+    private ListHouse getHouse() {
+        String lastName;
+        String firstName;
+        int lotNumber;
+        String price;
+        String squareFeet;
+        String bedRooms;
+        lotNumber = Integer.parseInt(jTxtLotNo.getText());
+        firstName = jTxtFirstName.getText();
+        lastName = jTxtLastName.getText();
+        price = jTxtPrice.getText();
+        squareFeet = jTxtSqFeet.getText();
+        bedRooms = jTxtNoOfBedrooms.getText();
+        ListHouse house = new ListHouse(lastName, firstName, lotNumber, price,
+                squareFeet, bedRooms);
+        return house;
+        
     }
     
 }

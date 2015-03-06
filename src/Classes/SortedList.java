@@ -6,8 +6,6 @@
 //----------------------------------------------------------------------------
 package Classes;
 
-import Classes.List.*;
-
 public class SortedList extends List {
 
     public SortedList(int maxItems) // Instantiates and returns a reference to an empty list object
