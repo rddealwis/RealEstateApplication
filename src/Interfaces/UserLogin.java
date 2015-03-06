@@ -6,9 +6,13 @@
 
 package Interfaces;
 
-import Classes.Button;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.xml.parsers.*;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.w3c.dom.*;
+import Classes.*;
 
 /**
  *
@@ -16,12 +20,19 @@ import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
  */
 public class UserLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UserLogin
-     */
-    public UserLogin() {
-        initComponents();
-    }
+   /**
+    * Creates new form UserLogin
+    */
+   private String path = "userlogindetails.xml";
+   private static SortedList list = new SortedList();
+   private ListHouse userLogin;
+
+   public UserLogin() 
+   {
+      this.setLocationRelativeTo(null);
+      initComponents();
+      loadTheXMLFile();
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -227,4 +238,38 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtPwd;
     private javax.swing.JTextField jTxtUserName;
     // End of variables declaration//GEN-END:variables
+ 
+   private void loadTheXMLFile() 
+   {
+      ListUserLogin userLogin;
+
+      try {
+         
+         File fXmlFile = new File(path);
+         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+         Document doc = dBuilder.parse(fXmlFile);
+
+         doc.getDocumentElement().normalize();
+
+         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+         NodeList nList = doc.getElementsByTagName("Login");
+
+         for (int temp = 0; temp < nList.getLength(); temp++) {
+
+            Node nNode = nList.item(temp);
+
+            //JOptionPane.showMessageDialog(rootPane,"\nCurrent Element :" + nNode.getNodeName());
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+               userLogin = UserLoginFile.getNextUserLogin(nNode);
+               list.insert(userLogin);
+               //			JOptionPane.showMessageDialog(rootPane,xmlValue);
+            }
+         }
+
+      } catch (Exception e) {
+         JOptionPane.showMessageDialog(rootPane, e.getMessage());
+      }
+   }
 }

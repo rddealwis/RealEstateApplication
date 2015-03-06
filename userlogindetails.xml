@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<UserLogins xmlns="http://www.realestateapplication.com/UserLogins">
+<Login id="1">
+<UserName/>
+<Password/>
+</Login>
+<Login id="2">
+<UserName>Lisa</UserName>
+<Password>35</Password>
+</Login>
+</UserLogins>
