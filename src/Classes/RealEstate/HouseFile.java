@@ -6,7 +6,9 @@
 package Classes.RealEstate;
 
 import java.io.*;
+import javax.swing.JOptionPane;
 import org.w3c.dom.*;
+
 
 public class HouseFile // Manages file "houses.dat" of real estate information
 {
@@ -56,31 +58,33 @@ public class HouseFile // Manages file "houses.dat" of real estate information
     public static ListHouse getNextHouse(Node nNode) throws IOException // Gets and returns house information from the house info file
     // Precondition: inFile is open and holds more house information
     {
-        String lastName = "xxxxx";
-        String firstName = "xxxxx";
+        try
+        {
         int lotNumber = 0;
-        String price = "xxxxx";
-        String squareFeet = "xxxxx";
-        String bedRooms = "xxxxx";
+        String lastName = "";
+        String firstName = "";        
+        int price = 0;
+        int squareFeet = 0;
+        int bedRooms = 0;
         Element eElement = (Element) nNode;
         
-        lastName = eElement.getAttribute("id");
-        firstName = eElement.getElementsByTagName("name").item(0).getTextContent();
-        lotNumber = Integer.parseInt(eElement.getElementsByTagName("age").item(0).getTextContent());
-        price = eElement.getElementsByTagName("age").item(0).getTextContent();
-        squareFeet = eElement.getElementsByTagName("gender").item(0).getTextContent();
-        bedRooms = eElement.getElementsByTagName("name").item(0).getTextContent();
+        lotNumber = Integer.parseInt(eElement.getAttribute("lotNumber"));
+        lastName = eElement.getElementsByTagName("lastName").item(0).getTextContent();
+        firstName = eElement.getElementsByTagName("firstName").item(0).getTextContent();        
+        price = Integer.parseInt(eElement.getElementsByTagName("price").item(0).getTextContent());
+        squareFeet = Integer.parseInt(eElement.getElementsByTagName("squareFeet").item(0).getTextContent());
+        bedRooms = Integer.parseInt(eElement.getElementsByTagName("bedRooms").item(0).getTextContent());
         
         ListHouse house = new ListHouse(lastName, firstName, lotNumber, price,squareFeet, bedRooms);
-        
-        
-        
-        /*String xmlValue="\nStaff id : " + eElement.getAttribute("id")+
-                                "\nName : " + eElement.getElementsByTagName("name").item(0).getTextContent()+
-                                "\nAge : " + eElement.getElementsByTagName("age").item(0).getTextContent()+
-                                "\nRole : " + eElement.getElementsByTagName("role").item(0).getTextContent()+
-                                "\nGender : " + eElement.getElementsByTagName("gender").item(0).getTextContent();*/
         return house;
+        
+        }
+        catch(Exception e)
+        {
+        System.out.println(e.getMessage());
+        }
+        return null;
+        
     }
 
     public static void putToFile(ListHouse house) throws IOException // Puts parameter house information into the house info file

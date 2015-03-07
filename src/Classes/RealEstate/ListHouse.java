@@ -11,11 +11,11 @@ public class ListHouse implements Listable {
     private String lastName;
     private String firstName;
     private int lotNumber;
-    private String price;
-    private String squareFeet;
-    private String bedRooms;
+    private int price;
+    private int squareFeet;
+    private int bedRooms;
 
-    public ListHouse(String lastName, String firstName, int lotNumber, String price, String squareFeet, String bedRooms) 
+    public ListHouse(String lastName, String firstName, int lotNumber, int price, int squareFeet, int bedRooms) 
     {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -50,15 +50,15 @@ public class ListHouse implements Listable {
         return lotNumber;
     }
 
-    public String price() {
+    public int price() {
         return price;
     }
 
-    public String squareFeet() {
+    public int squareFeet() {
         return squareFeet;
     }
 
-    public String bedRooms() {
+    public int bedRooms() {
         return bedRooms;
     }
 }

@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Employees xmlns="http://www.journaldev.com/employee">
-<Employee id="1">
-<name>Chintaka</name>
-<age>1000</age>
-<role>1</role>
-<gender>1111</gender>
-</Employee>
-<Employee id="2">
-<name>Chintaka2</name>
-<age>2000</age>
-<role>2</role>
-<gender>2222</gender>
-</Employee>
-<Employee id="3">
-<name>Chintaka3</name>
-<age>3000</age>
-<role>3</role>
-<gender>3333</gender>
-</Employee>
-</Employees>
+<Houses xmlns="http://www.InfinityRealEstates.com/house">
+<House lotNumber="1000">
+<firstName>Chintaka1</firstName>
+<lastName>Wijetunga1</lastName>
+<price>10</price>
+<squareFeet>1111</squareFeet>
+<bedRooms>1111</bedRooms>
+</House>
+<House lotNumber="3000">
+<firstName>Chintaka3</firstName>
+<lastName>Wijetunga3</lastName>
+<price>30</price>
+<squareFeet>3333</squareFeet>
+<bedRooms>3333333</bedRooms>
+</House>
+<House lotNumber="5000">
+<firstName>Chintaka5</firstName>
+<lastName>Wijetunga5</lastName>
+<price>50</price>
+<squareFeet>5555</squareFeet>
+<bedRooms>55</bedRooms>
+</House>
+</Houses>

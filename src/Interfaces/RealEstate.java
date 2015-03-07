@@ -558,7 +558,7 @@ public class RealEstate extends javax.swing.JFrame {
        try {
           lotNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
 
-          house = new ListHouse("", "", lotNumber, "0", "0", "0");
+          house = new ListHouse("", "", lotNumber, 0, 0, 0);
           
           if (list.isThere(house)) {
              house = (ListHouse) list.retrieve(house);
@@ -677,7 +677,7 @@ public class RealEstate extends javax.swing.JFrame {
          doc.getDocumentElement().normalize();
 
          
-         NodeList nList = doc.getElementsByTagName("Employee");
+         NodeList nList = doc.getElementsByTagName("House");
          int listSize=nList.getLength();
          
          for (int temp = 0; temp < listSize; temp++) {
@@ -709,9 +709,9 @@ public class RealEstate extends javax.swing.JFrame {
       jTxtLotNo.setText(Integer.toString(house.lotNumber()));
       jTxtFirstName.setText(house.firstName());
       jTxtLastName.setText(house.lastName());
-      jTxtPrice.setText(house.price());
-      jTxtSqFeet.setText(house.squareFeet());
-      jTxtNoOfBedrooms.setText(house.bedRooms());
+      jTxtPrice.setText(Integer.toString(house.price()));
+      jTxtSqFeet.setText(Integer.toString(house.squareFeet()));
+      jTxtNoOfBedrooms.setText(Integer.toString(house.bedRooms()));
    }
 
    private void PopulateTheTable() 
@@ -746,16 +746,16 @@ public class RealEstate extends javax.swing.JFrame {
       String lastName;
       String firstName;
       int lotNumber;
-      String price;
-      String squareFeet;
-      String bedRooms;
+      int price;
+      int squareFeet;
+      int bedRooms;
       
       lotNumber = Integer.parseInt(jTxtLotNo.getText());
       firstName = jTxtFirstName.getText();
       lastName = jTxtLastName.getText();
-      price = jTxtPrice.getText();
-      squareFeet = jTxtSqFeet.getText();
-      bedRooms = jTxtNoOfBedrooms.getText();
+      price = Integer.parseInt(jTxtPrice.getText());
+      squareFeet = Integer.parseInt(jTxtSqFeet.getText());
+      bedRooms = Integer.parseInt(jTxtNoOfBedrooms.getText());
       
       ListHouse house = new ListHouse(lastName, firstName, lotNumber, price, squareFeet, bedRooms);
       
@@ -772,13 +772,13 @@ public class RealEstate extends javax.swing.JFrame {
             Document doc = dBuilder.newDocument();
             //add elements to Document
             Element rootElement =
-                doc.createElementNS("http://www.journaldev.com/employee", "Employees");
+                doc.createElementNS("http://www.InfinityRealEstates.com/house", "Houses");
             //append root element to document
             doc.appendChild(rootElement);
  
             while(count<list.lengthIs()){
             ListHouse house = (ListHouse) list.getNextItem(false);
-            rootElement.appendChild(getHouse(doc, Integer.toString(house.lotNumber()), house.firstName(), house.lastName(), house.price(), house.squareFeet()));
+            rootElement.appendChild(getHouse(doc, house.lotNumber(), house.firstName(), house.lastName(), house.price(), house.squareFeet(), house.bedRooms()));
             count++;
             }
  
@@ -803,32 +803,34 @@ public class RealEstate extends javax.swing.JFrame {
         }
     }
     
-    private static Node getHouse(Document doc, String id, String name, String age, String role,
-            String gender) {
+    private static Node getHouse(Document doc, int lotNumber, String firstName, String lastName, int price,
+            int squareFeet, int bedRooms) {
     
-    Element employee = doc.createElement("Employee");
- 
+    Element house = doc.createElement("House");
+
         //set id attribute
-        employee.setAttribute("id", id);
+        house.setAttribute("lotNumber", Integer.toString(lotNumber));
  
         //create name element
-        employee.appendChild(getHouseElements(doc, employee, "name", name));
+        house.appendChild(getHouseElements(doc, "firstName", firstName));
  
         //create age element
-        employee.appendChild(getHouseElements(doc, employee, "age", age));
+        house.appendChild(getHouseElements(doc, "lastName", lastName));
  
         //create role element
-        employee.appendChild(getHouseElements(doc, employee, "role", role));
+        house.appendChild(getHouseElements(doc, "price", Integer.toString(price)));
  
         //create gender element
-        employee.appendChild(getHouseElements(doc, employee, "gender", gender));
+        house.appendChild(getHouseElements(doc, "squareFeet", Integer.toString(squareFeet)));
  
-        return employee;
+        house.appendChild(getHouseElements(doc, "bedRooms", Integer.toString(bedRooms)));
+        
+        return house;
     
     
     }
     
-    private static Node getHouseElements(Document doc, Element element, String name, String value) {
+    private static Node getHouseElements(Document doc, String name, String value) {
         Element node = doc.createElement(name);
         node.appendChild(doc.createTextNode(value));
         return node;
