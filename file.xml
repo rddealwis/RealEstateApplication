@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Employees xmlns="http://www.journaldev.com/employee">
-<Employee id="1000">
+<Employee id="1">
 <name>Chintaka</name>
-<age>1</age>
-<role>1000</role>
+<age>1000</age>
+<role>1</role>
 <gender>1111</gender>
 </Employee>
-<Employee id="2000">
+<Employee id="2">
 <name>Chintaka2</name>
-<age>2</age>
-<role>2000</role>
+<age>2000</age>
+<role>2</role>
 <gender>2222</gender>
 </Employee>
-<Employee id="3000">
+<Employee id="3">
 <name>Chintaka3</name>
-<age>3</age>
-<role>3000</role>
+<age>3000</age>
+<role>3</role>
 <gender>3333</gender>
 </Employee>
 </Employees>
