@@ -533,7 +533,7 @@ public class RealEstate extends javax.swing.JFrame {
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
        list.reset();
-       house = (ListHouse) list.getNextItem();
+       house = (ListHouse) list.getNextItem(false);
        showHouse(house);
     }//GEN-LAST:event_jBtnResetActionPerformed
 
@@ -587,12 +587,12 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
     private void jBtnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPrevActionPerformed
-       ListHouse house = (ListHouse) list.getPreviousItem();
+       ListHouse house = (ListHouse) list.getPreviousItem(true);
        showHouse(house);
     }//GEN-LAST:event_jBtnPrevActionPerformed
 
     private void jBtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNextActionPerformed
-       ListHouse house = (ListHouse) list.getNextItem();
+       ListHouse house = (ListHouse) list.getNextItem(true);
        showHouse(house);
     }//GEN-LAST:event_jBtnNextActionPerformed
 
@@ -669,11 +669,11 @@ public class RealEstate extends javax.swing.JFrame {
 
          doc.getDocumentElement().normalize();
 
-         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
+         
          NodeList nList = doc.getElementsByTagName("Employee");
-
-         for (int temp = 0; temp < nList.getLength(); temp++) {
+         int listSize=nList.getLength();
+         
+         for (int temp = 0; temp < listSize; temp++) {
 
             Node nNode = nList.item(temp);
 
@@ -685,13 +685,15 @@ public class RealEstate extends javax.swing.JFrame {
             }
          }
 
-         house = (ListHouse) list.getNextItem();
+         if(listSize!=0)
+                 {
+         house = (ListHouse) list.getNextItem(false);
          showHouse(house);
 
          PopulateTheTable();
-
+                 }
       } catch (Exception e) {
-         JOptionPane.showMessageDialog(rootPane, e.getMessage());
+         JOptionPane.showMessageDialog(rootPane, e.getMessage().toString());
       }    
    }
 
@@ -709,14 +711,15 @@ public class RealEstate extends javax.swing.JFrame {
    {
       ListHouse house;
       int count = 0;
-      
+      list.reset();
       Object[] columnNames = {"Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"};
       DefaultTableModel model = new DefaultTableModel(new Object[0][0], columnNames);
       
       while (count <= list.lengthIs() - 1) 
       {
          Object[] o = new Object[6];
-         house = (ListHouse) list.getNextItem();
+         
+         house = (ListHouse) list.getNextItem(false);
 
          o[0] = Integer.toString(house.lotNumber());
          o[1] = (house.firstName());
@@ -727,6 +730,7 @@ public class RealEstate extends javax.swing.JFrame {
          model.addRow(o);
          count++;
       }
+      list.reset();
       jTableEstateInfo.setModel(model);
    }
 
@@ -766,7 +770,7 @@ public class RealEstate extends javax.swing.JFrame {
             doc.appendChild(rootElement);
  
             while(count<list.lengthIs()){
-            ListHouse house = (ListHouse) list.getNextItem();
+            ListHouse house = (ListHouse) list.getNextItem(false);
             rootElement.appendChild(getHouse(doc, Integer.toString(house.lotNumber()), house.firstName(), house.lastName(), house.price(), house.squareFeet()));
             count++;
             }
@@ -785,7 +789,7 @@ public class RealEstate extends javax.swing.JFrame {
             //write data
             //transformer.transform(source, console);
             transformer.transform(source, file);
-            JOptionPane.showMessageDialog(rootPane,"File saved!");
+            //JOptionPane.showMessageDialog(rootPane,"File saved!");
  
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

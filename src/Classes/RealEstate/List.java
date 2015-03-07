@@ -49,7 +49,7 @@ public abstract class List {
         currentPos = 0;
     }
 
-    public Listable getNextItem() // Returns copy of the next element on this list 
+    public Listable getNextItem(boolean isNextButton) // Returns copy of the next element on this list 
     {
         Listable next = list[currentPos];
         if (currentPos == numItems - 1) {
@@ -57,12 +57,16 @@ public abstract class List {
         } else {
             currentPos++;
         }
+        if(isNextButton)
+        {
+        next = list[currentPos];
+        }
         return next.copy();
     }
-    public Listable getPreviousItem() // Returns copy of the next element on this list 
+    public Listable getPreviousItem(boolean isPreviousButton) // Returns copy of the next element on this list 
     {
-        Listable next = list[currentPos];
-        if (currentPos == numItems - 1 ) {
+        Listable previous = list[currentPos];
+        if (currentPos == 1 ) {
             currentPos = 0;
         } 
         else if (currentPos==0)
@@ -72,6 +76,10 @@ public abstract class List {
         else {
             currentPos--;
         }
-        return next.copy();
+        if(isPreviousButton)
+        {
+        previous = list[currentPos];
+        }
+        return previous.copy();
     }
 }
