@@ -35,5 +35,16 @@ public class ListUserLogin implements Listable {
         ListUserLogin other = (ListUserLogin) otherListHouse;
         return (this.loginId - other.loginId);
     }
+    
+    public int loginId() {
+        return loginId;
+    }
+    
+    public String userName() {
+        return userName;
+    }
 
+    public String password() {
+        return password;
+    }
 }

@@ -14,12 +14,13 @@ import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
  *
  * @author Ras
  */
-public class AddNewUser extends javax.swing.JFrame {
+public class ChangePassword extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddNewUser
+     * Creates new form ChangePassword
      */
-    public AddNewUser() {
+    public ChangePassword() 
+    {
         initComponents();
         this.setResizable(false);
     }
@@ -33,10 +34,12 @@ public class AddNewUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelAddNewUser = new javax.swing.JPanel();
-        jLabelNewUserName = new javax.swing.JLabel();
-        jLabelPwd = new javax.swing.JLabel();
+        jPanelChngPwd = new javax.swing.JPanel();
+        jLabelUserName = new javax.swing.JLabel();
+        jLabelOldPwd = new javax.swing.JLabel();
+        jLabelNewPwd = new javax.swing.JLabel();
         jTxtUserName = new javax.swing.JTextField();
+        jTxtOldPwd = new javax.swing.JTextField();
         jTxtNewPwd = new javax.swing.JTextField();
         jLabelConfirmPwd = new javax.swing.JLabel();
         jTxtConfirmPwd = new javax.swing.JTextField();
@@ -44,16 +47,18 @@ public class AddNewUser extends javax.swing.JFrame {
         jBtnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Add New User");
+        setTitle("Change Password");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jLabelNewUserName.setText("User Name");
+        jLabelUserName.setText("User Name");
 
-        jLabelPwd.setText("Password");
+        jLabelOldPwd.setText("Old Password");
+
+        jLabelNewPwd.setText("New Password");
 
         jLabelConfirmPwd.setText("Confirm Password");
 
@@ -91,46 +96,52 @@ public class AddNewUser extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelAddNewUserLayout = new javax.swing.GroupLayout(jPanelAddNewUser);
-        jPanelAddNewUser.setLayout(jPanelAddNewUserLayout);
-        jPanelAddNewUserLayout.setHorizontalGroup(
-            jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddNewUserLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNewUserName)
-                    .addComponent(jLabelPwd)
+        javax.swing.GroupLayout jPanelChngPwdLayout = new javax.swing.GroupLayout(jPanelChngPwd);
+        jPanelChngPwd.setLayout(jPanelChngPwdLayout);
+        jPanelChngPwdLayout.setHorizontalGroup(
+            jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelChngPwdLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelUserName)
+                    .addComponent(jLabelOldPwd)
+                    .addComponent(jLabelNewPwd)
                     .addComponent(jLabelConfirmPwd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtOldPwd, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTxtNewPwd, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTxtConfirmPwd, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTxtUserName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-            .addGroup(jPanelAddNewUserLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                    .addComponent(jTxtUserName)
+                    .addComponent(jTxtConfirmPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
+            .addGroup(jPanelChngPwdLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
                 .addComponent(jBtnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(43, 43, 43))
         );
-        jPanelAddNewUserLayout.setVerticalGroup(
-            jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddNewUserLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNewUserName)
+        jPanelChngPwdLayout.setVerticalGroup(
+            jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelChngPwdLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelUserName)
                     .addComponent(jTxtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPwd)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelOldPwd)
+                    .addComponent(jTxtOldPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNewPwd)
                     .addComponent(jTxtNewPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConfirmPwd)
                     .addComponent(jTxtConfirmPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanelAddNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanelChngPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnSubmit)
                     .addComponent(jBtnCancel))
                 .addContainerGap())
@@ -142,14 +153,14 @@ public class AddNewUser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelAddNewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelChngPwd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelAddNewUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelChngPwd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -176,12 +187,12 @@ public class AddNewUser extends javax.swing.JFrame {
 
     private void jBtnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCancelMouseEntered
       Button ob = new Button();
-      ob.paint(getGraphics(), jBtnCancel, "Entry");
+      ob.paint(getGraphics(), jBtnSubmit, "Entry");
     }//GEN-LAST:event_jBtnCancelMouseEntered
 
     private void jBtnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCancelMouseExited
       Button ob = new Button();
-      ob.paint(getGraphics(), jBtnCancel, "Exit");
+      ob.paint(getGraphics(), jBtnSubmit, "Exit");
     }//GEN-LAST:event_jBtnCancelMouseExited
 
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
@@ -215,7 +226,7 @@ public class AddNewUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddNewUser().setVisible(true);
+                new ChangePassword().setVisible(true);
             }
         });
     }
@@ -224,11 +235,13 @@ public class AddNewUser extends javax.swing.JFrame {
     private javax.swing.JButton jBtnCancel;
     private javax.swing.JButton jBtnSubmit;
     private javax.swing.JLabel jLabelConfirmPwd;
-    private javax.swing.JLabel jLabelNewUserName;
-    private javax.swing.JLabel jLabelPwd;
-    private javax.swing.JPanel jPanelAddNewUser;
+    private javax.swing.JLabel jLabelNewPwd;
+    private javax.swing.JLabel jLabelOldPwd;
+    private javax.swing.JLabel jLabelUserName;
+    private javax.swing.JPanel jPanelChngPwd;
     private javax.swing.JTextField jTxtConfirmPwd;
     private javax.swing.JTextField jTxtNewPwd;
+    private javax.swing.JTextField jTxtOldPwd;
     private javax.swing.JTextField jTxtUserName;
     // End of variables declaration//GEN-END:variables
 }
