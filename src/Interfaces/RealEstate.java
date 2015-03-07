@@ -78,6 +78,9 @@ public class RealEstate extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Real Estate Program");
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -600,6 +603,10 @@ public class RealEstate extends javax.swing.JFrame {
         SaveToXML();
         this.dispose();
     }//GEN-LAST:event_jBtnCloseActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        SaveToXML();
+    }//GEN-LAST:event_formWindowClosing
 
    /**
     * @param args the command line arguments
