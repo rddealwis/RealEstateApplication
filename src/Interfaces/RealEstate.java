@@ -14,6 +14,11 @@ import javax.xml.parsers.*;
 import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
 
 /**
@@ -592,7 +597,8 @@ public class RealEstate extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnNextActionPerformed
 
     private void jBtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseActionPerformed
-       this.dispose();
+        SaveToXML();
+        this.dispose();
     }//GEN-LAST:event_jBtnCloseActionPerformed
 
    /**
@@ -744,4 +750,76 @@ public class RealEstate extends javax.swing.JFrame {
       
       return house;
    }
+
+    private void SaveToXML() {
+        int count=0;
+        
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.newDocument();
+            //add elements to Document
+            Element rootElement =
+                doc.createElementNS("http://www.journaldev.com/employee", "Employees");
+            //append root element to document
+            doc.appendChild(rootElement);
+ 
+            while(count<list.lengthIs()){
+            ListHouse house = (ListHouse) list.getNextItem();
+            rootElement.appendChild(getHouse(doc, Integer.toString(house.lotNumber()), house.firstName(), house.lastName(), house.price(), house.squareFeet()));
+            count++;
+            }
+ 
+            //for output to file, console
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            //for pretty print
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(doc);
+ 
+            //write to console or file
+            //StreamResult console = new StreamResult(System.out);
+            StreamResult file = new StreamResult(new File(path));
+ 
+            //write data
+            //transformer.transform(source, console);
+            transformer.transform(source, file);
+            JOptionPane.showMessageDialog(rootPane,"File saved!");
+ 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }
+    
+    private static Node getHouse(Document doc, String id, String name, String age, String role,
+            String gender) {
+    
+    Element employee = doc.createElement("Employee");
+ 
+        //set id attribute
+        employee.setAttribute("id", id);
+ 
+        //create name element
+        employee.appendChild(getHouseElements(doc, employee, "name", name));
+ 
+        //create age element
+        employee.appendChild(getHouseElements(doc, employee, "age", age));
+ 
+        //create role element
+        employee.appendChild(getHouseElements(doc, employee, "role", role));
+ 
+        //create gender element
+        employee.appendChild(getHouseElements(doc, employee, "gender", gender));
+ 
+        return employee;
+    
+    
+    }
+    
+    private static Node getHouseElements(Document doc, Element element, String name, String value) {
+        Element node = doc.createElement(name);
+        node.appendChild(doc.createTextNode(value));
+        return node;
+    }
 }
