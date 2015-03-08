@@ -7,6 +7,9 @@
 package Interfaces;
 
 import Classes.General.Button;
+import Classes.RealEstate.SortedList;
+import Classes.UserLogin.*;
+import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
@@ -19,7 +22,10 @@ public class AddNewUser extends javax.swing.JFrame {
     /**
      * Creates new form AddNewUser
      */
-    Options optionsForm;
+    private ListUserLogin userLogin;
+    private static SortedList list = new SortedList();
+    Options optionsForm;    
+    UserLoginXML ob = new UserLoginXML();
 
     private AddNewUser() 
     {
@@ -195,7 +201,20 @@ public class AddNewUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCancelMouseExited
 
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
-        // TODO add your handling code here:
+      
+        try {
+            userLogin = ob.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
+            if (list.isThere(userLogin)) {
+                JOptionPane.showMessageDialog(rootPane, "User name already in use");
+            } else {
+                list.insert(userLogin);
+                ob.saveToUserLoginXML();
+                JOptionPane.showMessageDialog(rootPane, "User credentials added to list");
+            }
+        } catch (NumberFormatException badHouseData) {
+            // Text field info incorrectly formated
+            JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+        }        
     }//GEN-LAST:event_jBtnSubmitActionPerformed
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed

@@ -16,17 +16,15 @@ public class UserLoginFile {
    
    public static ListUserLogin getNextUserLogin(Node nNode) throws IOException // Gets and returns user login information from the user login details file
                                                                                // Precondition: inFile is open and holds more user login information
-    {        
-      int loginId = 0;
+    {    
       String userName = "xxxxx";
       String password = "xxxxx";
       Element eElement = (Element) nNode;
 
-      loginId = Integer.parseInt(eElement.getAttribute("id"));
-      userName = eElement.getElementsByTagName("UserName").item(0).getTextContent();
+      userName = eElement.getAttribute("UserName");
       password = eElement.getElementsByTagName("Password").item(0).getTextContent();
 
-      ListUserLogin userLogin = new ListUserLogin(loginId, userName, password);
+      ListUserLogin userLogin = new ListUserLogin(userName, password);
 
       return userLogin;
    }

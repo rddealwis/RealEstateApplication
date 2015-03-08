@@ -13,33 +13,28 @@ import Classes.RealEstate.Listable;
  */
 public class ListUserLogin implements Listable {
 
-    private int loginId;
     private String userName;
     private String password;
 
-   public ListUserLogin(int loginId, String userName, String password) 
+   public ListUserLogin(String userName, String password) 
    {
-      this.loginId = loginId;
       this.userName = userName;
       this.password = password;
    }
 
    public Listable copy() // Returns a copy of this ListHouse
     {
-        ListUserLogin result = new ListUserLogin(loginId, userName, password);
+        ListUserLogin result = new ListUserLogin(userName, password);
         return result;
     }
 
     public int compareTo(Listable otherListHouse) // Houses are compared based on their lot numbers
     {
-        ListUserLogin other = (ListUserLogin) otherListHouse;
-        return (this.loginId - other.loginId);
+//        ListUserLogin other = (ListUserLogin) otherListHouse;
+//        return (this.loginId - other.loginId);
+        return 0;
     }
-    
-    public int loginId() {
-        return loginId;
-    }
-    
+        
     public String userName() {
         return userName;
     }
