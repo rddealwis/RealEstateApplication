@@ -556,7 +556,8 @@ public class RealEstate extends javax.swing.JFrame {
        int lotNumber;
        
        try {
-          lotNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
+          //lotNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
+          lotNumber = Integer.parseInt(JOptionPane.showInputDialog(this,"Please enter the Lot Number to Search: ","Search Lot Number",JOptionPane.QUESTION_MESSAGE));
 
           house = new ListHouse("", "", lotNumber, 0, 0, 0);
           

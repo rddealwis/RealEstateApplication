@@ -19,8 +19,18 @@ public class AddNewUser extends javax.swing.JFrame {
     /**
      * Creates new form AddNewUser
      */
-    public AddNewUser() {
+    Options optionsForm;
+
+    private AddNewUser() 
+    {
         initComponents();
+        this.setResizable(false);
+    }
+    
+    AddNewUser(Options optionsForm) 
+    {
+        initComponents();
+        this.optionsForm = optionsForm;
         this.setResizable(false);
     }
 
@@ -190,6 +200,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
       this.setVisible(false);
+      optionsForm.setVisible(true);
     }//GEN-LAST:event_jBtnCancelActionPerformed
 
     /**

@@ -19,9 +19,18 @@ public class ChangePassword extends javax.swing.JFrame {
     /**
      * Creates new form ChangePassword
      */
-    public ChangePassword() 
+    Options optionsForm;
+   
+    private ChangePassword() 
     {
         initComponents();
+        this.setResizable(false);
+    }
+    
+    ChangePassword(Options optionsForm) 
+    {
+        initComponents();
+        this.optionsForm = optionsForm;
         this.setResizable(false);
     }
 
@@ -201,6 +210,7 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void jBtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelActionPerformed
       this.setVisible(false);
+      optionsForm.setVisible(true);
     }//GEN-LAST:event_jBtnCancelActionPerformed
 
     /**

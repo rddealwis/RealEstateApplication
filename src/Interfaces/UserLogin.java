@@ -237,20 +237,8 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAddUserMouseExited
 
     private void jBtnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddUserActionPerformed
-        //Custom button text
-        Object[] options = {"Add User","Change Password","Cancel"};
-        int n = JOptionPane.showOptionDialog(this, "Please select an option", "Options", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
-        
-        if(n == JOptionPane.YES_OPTION)
-        {
-            AddNewUser ob = new AddNewUser();
-            ob.setVisible(true);
-        }
-        else if (n == JOptionPane.NO_OPTION)
-        {
-            ChangePassword ob = new ChangePassword();
-            ob.setVisible(true);
-        }
+      Options ob = new Options();
+      ob.setVisible(true);        
     }//GEN-LAST:event_jBtnAddUserActionPerformed
 
     /**
@@ -336,7 +324,8 @@ public class UserLogin extends javax.swing.JFrame {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
             //add elements to Document
-            Element rootElement = doc.createElementNS("http://www.realestateapplication.com/UserLogins", "UserLogins");
+            Element rootElement = doc.createElementNS("http://www.InfinityRealEstates.com/UserLogins", "UserLogins");
+            
             //append root element to document
             doc.appendChild(rootElement);
  
