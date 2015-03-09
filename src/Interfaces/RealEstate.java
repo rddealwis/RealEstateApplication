@@ -534,15 +534,15 @@ public class RealEstate extends javax.swing.JFrame {
        try {
           house = getHouse();
           if (list.isThere(house)) {
-             JOptionPane.showMessageDialog(rootPane, "Lot number already in use");
+             JOptionPane.showMessageDialog(rootPane, "Lot number you specified already in use.");
           } else {
              list.insert(house);
-             JOptionPane.showMessageDialog(rootPane, "House added to list");
+             JOptionPane.showMessageDialog(rootPane, "All detailes saved.");
              PopulateTheTable();
           }
        } catch (NumberFormatException badHouseData) {
             // Text field info incorrectly formated
-          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+          JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");
        }
     }//GEN-LAST:event_jBtnSaveActionPerformed
 
@@ -568,7 +568,6 @@ public class RealEstate extends javax.swing.JFrame {
        int lotNumber;
        
        try {
-          //lotNumber = Integer.parseInt(JOptionPane.showInputDialog("Please enter the Lot Number to Search: "));
           lotNumber = Integer.parseInt(JOptionPane.showInputDialog(this,"Please enter the Lot Number to Search: ","Search Lot Number",JOptionPane.QUESTION_MESSAGE));
 
           house = new ListHouse("", "", lotNumber, 0, 0, 0);
@@ -576,13 +575,11 @@ public class RealEstate extends javax.swing.JFrame {
           if (list.isThere(house)) {
              house = (ListHouse) list.retrieve(house);
              showHouse(house);
-             JOptionPane.showMessageDialog(rootPane, "House found");
           } else {
-             JOptionPane.showMessageDialog(rootPane, "House not found");
+             JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");
           }
        } catch (NumberFormatException badHouseData) {
-            // Text field info incorrectly formated
-          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+          JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");
        }
     }//GEN-LAST:event_jBtnSearchActionPerformed
 
@@ -591,14 +588,14 @@ public class RealEstate extends javax.swing.JFrame {
           house = getHouse();
           if (list.isThere(house)) {
              list.delete(house);
-             JOptionPane.showMessageDialog(rootPane, "House deleted");
+             JOptionPane.showMessageDialog(rootPane, "Lot Number "+house.lotNumber() +" is deleted.");
              PopulateTheTable();
           } else {
-             JOptionPane.showMessageDialog(rootPane, "Lot number not on list");
+             JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");
           }
        } catch (NumberFormatException badHouseData) {
             // Text field info incorrectly formated
-          JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
+          JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");
        }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
 
