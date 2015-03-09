@@ -77,7 +77,7 @@ public class ChangePassword extends javax.swing.JFrame {
 
         jLabelConfirmPwd.setText("Confirm Password");
 
-        jBtnSubmit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnSubmit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         jBtnSubmit.setText("Submit");
         jBtnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,7 +94,7 @@ public class ChangePassword extends javax.swing.JFrame {
             }
         });
 
-        jBtnCancel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnCancel.setForeground(new java.awt.Color(255, 255, 255));
         jBtnCancel.setText("Cancel");
         jBtnCancel.addMouseListener(new java.awt.event.MouseAdapter() {

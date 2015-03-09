@@ -14,9 +14,7 @@ import javax.xml.parsers.*;
 import org.jb2011.lnf.beautyeye.*;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
@@ -38,6 +36,7 @@ public class RealEstate extends javax.swing.JFrame {
     public RealEstate() 
     {
         initComponents();
+        this.setResizable(false);
         loadTheXMLFile();
     }
 
@@ -276,6 +275,14 @@ public class RealEstate extends javax.swing.JFrame {
         jBtnPopulate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnPopulate.setForeground(new java.awt.Color(255, 255, 255));
         jBtnPopulate.setText("Populate");
+        jBtnPopulate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBtnPopulateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBtnPopulateMouseExited(evt);
+            }
+        });
         jBtnPopulate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnPopulateActionPerformed(evt);
@@ -310,21 +317,19 @@ public class RealEstate extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jMainPanelLayout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jBtnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
+                        .addGap(105, 105, 105)
                         .addComponent(jBtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jBtnDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtnClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jBtnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnPopulate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                    .addComponent(jBtnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnPopulate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(jBtnDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jMainPanelLayout.setVerticalGroup(
             jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,12 +380,17 @@ public class RealEstate extends javax.swing.JFrame {
                         .addComponent(jBtnSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnDelete)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnClose)
-                    .addComponent(jBtnPrev)
-                    .addComponent(jBtnNext))
-                .addGap(20, 20, 20))
+                .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jMainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jBtnClose)
+                        .addGap(20, 20, 20))
+                    .addGroup(jMainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtnNext)
+                            .addComponent(jBtnPrev))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -389,15 +399,15 @@ public class RealEstate extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37))
+                .addComponent(jMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(4, 4, 4))
         );
 
         pack();
@@ -621,21 +631,25 @@ public class RealEstate extends javax.swing.JFrame {
         SaveToXML();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jBtnPopulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPopulateActionPerformed
-        // TODO add your handling code here:
-        if(list.lengthIs()!=0)
-                 {
-         house = (ListHouse) list.getNextItem(false);
-         showHouse(house);
+    private void jBtnPopulateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnPopulateMouseEntered
+      Button ob = new Button();
+      ob.paint(getGraphics(), jBtnPopulate, "Entry");
+    }//GEN-LAST:event_jBtnPopulateMouseEntered
 
-         PopulateTheTable();
-                 }
-        else
-        {
-        JOptionPane.showMessageDialog(rootPane, "No houses to be shown.");
-        
+    private void jBtnPopulateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnPopulateMouseExited
+      Button ob = new Button();
+      ob.paint(getGraphics(), jBtnPopulate, "Exit");
+    }//GEN-LAST:event_jBtnPopulateMouseExited
+
+    private void jBtnPopulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPopulateActionPerformed
+        if (list.lengthIs() != 0) {
+            house = (ListHouse) list.getNextItem(false);
+            showHouse(house);
+
+            PopulateTheTable();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No houses to be shown.");
         }
-                       
     }//GEN-LAST:event_jBtnPopulateActionPerformed
 
    /**

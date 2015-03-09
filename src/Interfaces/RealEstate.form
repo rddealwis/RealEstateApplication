@@ -28,10 +28,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jMainPanel" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="jMainPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +40,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jMainPanel" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,25 +79,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                           <Component id="jBtnPrev" min="-2" pref="89" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                           <Component id="jBtnNext" min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="615" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBtnDelete" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jBtnSearch" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jBtnClose" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="jBtnClear" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jBtnSave" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jBtnAdd" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jBtnClose" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jBtnSearch" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jBtnClear" alignment="1" max="32767" attributes="0"/>
                       <Component id="jBtnReset" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jBtnPopulate" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jBtnSave" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jBtnAdd" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jBtnPopulate" alignment="1" pref="91" max="32767" attributes="0"/>
+                      <Component id="jBtnDelete" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -158,13 +155,21 @@
                           <Component id="jBtnDelete" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBtnClose" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBtnPrev" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBtnNext" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <Component id="jBtnClose" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jBtnNext" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBtnPrev" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -433,6 +438,8 @@
             <Property name="text" type="java.lang.String" value="Populate"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBtnPopulateMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBtnPopulateMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnPopulateActionPerformed"/>
           </Events>
         </Component>

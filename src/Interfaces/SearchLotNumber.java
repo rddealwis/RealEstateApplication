@@ -53,7 +53,7 @@ public class SearchLotNumber extends javax.swing.JDialog {
 
         jLabelLotNo.setText("Lot Number");
 
-        jBtnLotNoSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnLotNoSearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnLotNoSearch.setForeground(new java.awt.Color(255, 255, 255));
         jBtnLotNoSearch.setText("Search");
         jBtnLotNoSearch.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,7 +70,7 @@ public class SearchLotNumber extends javax.swing.JDialog {
             }
         });
 
-        jBtnCloseSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnCloseSearch.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnCloseSearch.setForeground(new java.awt.Color(255, 255, 255));
         jBtnCloseSearch.setText("Close");
         jBtnCloseSearch.addMouseListener(new java.awt.event.MouseAdapter() {

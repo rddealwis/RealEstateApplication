@@ -62,7 +62,7 @@ public class UserLogin extends javax.swing.JFrame {
 
         jLabelPwd.setText("Password");
 
-        jBtnLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnLogin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnLogin.setForeground(new java.awt.Color(255, 255, 255));
         jBtnLogin.setText("Login");
         jBtnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +79,7 @@ public class UserLogin extends javax.swing.JFrame {
             }
         });
 
-        jBtnCancel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnCancel.setForeground(new java.awt.Color(255, 255, 255));
         jBtnCancel.setText("Cancel");
         jBtnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,7 +96,7 @@ public class UserLogin extends javax.swing.JFrame {
             }
         });
 
-        jBtnAddUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jBtnAddUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jBtnAddUser.setForeground(new java.awt.Color(255, 255, 255));
         jBtnAddUser.setText("Options");
         jBtnAddUser.addMouseListener(new java.awt.event.MouseAdapter() {
