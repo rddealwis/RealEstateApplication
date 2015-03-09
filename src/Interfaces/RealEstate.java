@@ -537,7 +537,7 @@ public class RealEstate extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(rootPane, "Lot number you specified already in use.");
           } else {
              list.insert(house);
-             JOptionPane.showMessageDialog(rootPane, "All detailes saved.");
+             JOptionPane.showMessageDialog(rootPane, "All details saved.");
              PopulateTheTable();
           }
        } catch (NumberFormatException badHouseData) {
@@ -589,6 +589,9 @@ public class RealEstate extends javax.swing.JFrame {
           if (list.isThere(house)) {
              list.delete(house);
              JOptionPane.showMessageDialog(rootPane, "Lot Number "+house.lotNumber() +" is deleted.");
+             list.reset();
+             house = (ListHouse) list.getNextItem(false);
+             showHouse(house);
              PopulateTheTable();
           } else {
              JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");

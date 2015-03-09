@@ -14,13 +14,6 @@
 <squareFeet>4444</squareFeet>
 <bedRooms>22</bedRooms>
 </House>
-<House lotNumber="3000">
-<firstName>Chintaka3</firstName>
-<lastName>Wijetunga3</lastName>
-<price>30</price>
-<squareFeet>3333</squareFeet>
-<bedRooms>3333333</bedRooms>
-</House>
 <House lotNumber="5000">
 <firstName>Chintaka5</firstName>
 <lastName>Wijetunga5</lastName>
