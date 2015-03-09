@@ -40,6 +40,7 @@ public class frmMainMenu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Real Estate Application");
 
         javax.swing.GroupLayout jMainDesktopPaneLayout = new javax.swing.GroupLayout(jMainDesktopPane);
         jMainDesktopPane.setLayout(jMainDesktopPaneLayout);

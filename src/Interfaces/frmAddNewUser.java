@@ -51,6 +51,7 @@ public class frmAddNewUser extends javax.swing.JInternalFrame {
         jBtnCancel = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Add New User");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

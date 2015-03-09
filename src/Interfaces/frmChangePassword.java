@@ -53,6 +53,7 @@ public class frmChangePassword extends javax.swing.JInternalFrame {
         jBtnCancel = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Change Password");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

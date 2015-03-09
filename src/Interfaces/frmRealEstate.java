@@ -75,6 +75,7 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
         jBtnPopulate = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Real Estate Details");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
