@@ -21,11 +21,6 @@ public abstract class List {
         list = new Listable[maxItems];
     }
 
-    public boolean isFull() // Returns whether this list is full
-    {
-        return (list.length == numItems);
-    }
-
     public int lengthIs() // Returns the number of elements on this list 
     {
         return numItems;
