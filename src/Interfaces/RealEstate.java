@@ -36,7 +36,8 @@ public class RealEstate extends javax.swing.JFrame {
     public RealEstate() 
     {
         initComponents();
-        this.setResizable(false);
+        //this.setResizable(false);
+        //this.setExtendedState(MAXIMIZED_BOTH);
         loadTheXMLFile();
     }
 

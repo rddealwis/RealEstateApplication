@@ -8,6 +8,7 @@ package Interfaces;
 
 import Classes.General.Button;
 import Classes.RealEstate.*;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,8 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
     
     public frmRealEstate() {
         initComponents();
-        this.setResizable(false);
+        //this.setResizable(false);
+        
         loadTheXMLFile();
     }
 

@@ -6,6 +6,11 @@
 
 package Interfaces;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 /**
@@ -19,6 +24,10 @@ public class frmMainMenu extends javax.swing.JFrame {
      */
     public frmMainMenu() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setResizable(false);
+        
     }
 
     /**
@@ -107,7 +116,7 @@ public class frmMainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-      frmAddNewUser ob = new frmAddNewUser();
+      frmAddNewUser ob = new frmAddNewUser();      
       jMainDesktopPane.add(ob);
       ob.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -119,9 +128,15 @@ public class frmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        frmRealEstate ob = new frmRealEstate();
+        frmRealEstate ob = new frmRealEstate();        
         jMainDesktopPane.add(ob);
         ob.setVisible(true);
+        try {
+            ob.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(frmMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
