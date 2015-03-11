@@ -8,7 +8,6 @@ package Interfaces;
 
 import Classes.General.Button;
 import Classes.RealEstate.*;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +24,17 @@ import org.w3c.dom.*;
  */
 public class frmRealEstate extends javax.swing.JInternalFrame {
 
+    private static frmRealEstate instance;
+   
+    public static frmRealEstate GetInstance() 
+    {
+        if (instance == null) 
+        {
+            instance = new frmRealEstate();
+        }
+        return instance;
+    }
+    
     /**
      * Creates new form frmRealEstate
      */

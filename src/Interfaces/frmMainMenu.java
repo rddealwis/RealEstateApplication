@@ -6,8 +6,6 @@
 
 package Interfaces;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,9 +112,8 @@ public class frmMainMenu extends javax.swing.JFrame {
    }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-      frmAddNewUser ob = new frmAddNewUser();      
-      jMainDesktopPane.add(ob);
-      ob.setVisible(true);
+
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

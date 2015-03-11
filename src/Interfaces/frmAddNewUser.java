@@ -18,6 +18,17 @@ import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
  */
 public class frmAddNewUser extends javax.swing.JInternalFrame {
 
+    private static frmAddNewUser instance;
+   
+    public static frmAddNewUser GetInstance() 
+    {
+        if (instance == null) 
+        {
+            instance = new frmAddNewUser();
+        }
+        return instance;
+    }
+
     /**
      * Creates new form frmAddNewUser
      */
