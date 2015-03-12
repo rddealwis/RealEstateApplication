@@ -9,6 +9,7 @@ package Interfaces;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 /**
@@ -23,6 +24,7 @@ public class frmMainMenu extends javax.swing.JFrame {
     public frmMainMenu() {
         initComponents();
         this.setResizable(false);        
+        setIconImage(new ImageIcon(getClass().getResource("/Images/MainMenu.png")).getImage());
     }
 
     /**
@@ -48,7 +50,7 @@ public class frmMainMenu extends javax.swing.JFrame {
         jMIAboutUs = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Real Estate Application");
+        setTitle("Infinity Real Estates >> Main Menu");
 
         javax.swing.GroupLayout jMainDesktopPaneLayout = new javax.swing.GroupLayout(jMainDesktopPane);
         jMainDesktopPane.setLayout(jMainDesktopPaneLayout);

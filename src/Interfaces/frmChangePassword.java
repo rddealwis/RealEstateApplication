@@ -9,6 +9,7 @@ package Interfaces;
 import Classes.General.Button;
 import Classes.RealEstate.SortedList;
 import Classes.UserLogin.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
@@ -17,17 +18,6 @@ import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
  * @author Ras
  */
 public class frmChangePassword extends javax.swing.JInternalFrame {
-
-    private static frmChangePassword instance;
-   
-    public static frmChangePassword GetInstance() 
-    {
-        if (instance == null) 
-        {
-            instance = new frmChangePassword();
-        }
-        return instance;
-    }
     
     /**
      * Creates new form frmChangePassword
@@ -36,10 +26,21 @@ public class frmChangePassword extends javax.swing.JInternalFrame {
     private ListUserLogin userLogin;
     private static SortedList list = new SortedList();
     UserLoginXML ob = new UserLoginXML();
-    
+    private static frmChangePassword instance;
+   
     public frmChangePassword() {
         initComponents();
         this.setResizable(false);
+        this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/Change Password.png")));
+    }
+    
+    public static frmChangePassword GetInstance() 
+    {
+        if (instance == null) 
+        {
+            instance = new frmChangePassword();
+        }
+        return instance;
     }
 
     /**

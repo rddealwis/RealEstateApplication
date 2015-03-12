@@ -9,6 +9,7 @@ package Interfaces;
 import Classes.General.Button;
 import Classes.RealEstate.SortedList;
 import Classes.UserLogin.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
@@ -18,17 +19,7 @@ import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
  */
 public class frmAddNewUser extends javax.swing.JInternalFrame {
 
-    private static frmAddNewUser instance;
-   
-    public static frmAddNewUser GetInstance() 
-    {
-        if (instance == null) 
-        {
-            instance = new frmAddNewUser();
-        }
-        return instance;
-    }
-
+    
     /**
      * Creates new form frmAddNewUser
      */
@@ -36,10 +27,21 @@ public class frmAddNewUser extends javax.swing.JInternalFrame {
     private ListUserLogin userLogin;
     private static SortedList list = new SortedList();
     UserLoginXML ob = new UserLoginXML();
+    private static frmAddNewUser instance;      
     
     public frmAddNewUser() {
         initComponents();
         this.setResizable(false);
+        this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/AddUser.png")));
+    }
+    
+    public static frmAddNewUser GetInstance() 
+    {
+        if (instance == null) 
+        {
+            instance = new frmAddNewUser();
+        }
+        return instance;
     }
     
     /**

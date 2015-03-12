@@ -9,6 +9,7 @@ package Interfaces;
 import Classes.General.Button;
 import Classes.RealEstate.*;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.*;
@@ -46,9 +47,9 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
     
     public frmRealEstate() {
         initComponents();
-        //this.setResizable(false);
-        
+        //this.setResizable(false);        
         loadTheXMLFile();
+        this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/RealEstate.png")));
     }
 
     /**
