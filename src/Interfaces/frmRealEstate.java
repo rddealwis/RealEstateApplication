@@ -477,7 +477,14 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnSaveMouseExited
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
-        
+/*house = getHouse();
+            if (list.isThere(house)) {
+                list.delete(house);
+                JOptionPane.showMessageDialog(rootPane, "Lot Number "+house.lotNumber() +" is deleted.");
+                list.reset();
+                house = (ListHouse) list.getNextItem(false);
+                showHouse(house);
+                PopulateTheTable();*/        
         String errorMessage="Please check the following:\n\t";
         Boolean showErrorMessage=false;
         //Boolean showErrorMessage1=jTxtLotNo.toString().isEmpty();
@@ -523,11 +530,15 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
                 
                 if(JOptionPane.showConfirmDialog (rootPane, "Lot Number specified already exists. \nDo you want to update Lot Number " + jTxtLotNo.getText()+"?","Warning",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                 {
-                
+                list.delete(house);
+                list.reset();
+                list.insert(house);
+                JOptionPane.showMessageDialog(rootPane, "House details with Lot Number " + jTxtLotNo.getText()+" is successfully updated.");
+                PopulateTheTable();
                 }
             } else {
                 list.insert(house);
-                JOptionPane.showMessageDialog(rootPane, "All details saved.");
+                JOptionPane.showMessageDialog(rootPane, "House details with Lot Number " + jTxtLotNo.getText()+" is successfully saved.");
                 PopulateTheTable();
             }
             }
