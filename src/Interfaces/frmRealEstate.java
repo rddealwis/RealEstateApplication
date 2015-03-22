@@ -477,14 +477,59 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnSaveMouseExited
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
+        
+        String errorMessage="Please check the following:\n\t";
+        Boolean showErrorMessage=false;
+        //Boolean showErrorMessage1=jTxtLotNo.toString().isEmpty();
         try {
+            if(jTxtLotNo.getText().equals(""))
+            {
+                errorMessage+=">A lot number is missing.\n\t";
+                showErrorMessage=true;
+            }
+            if(jTxtFirstName.getText().equals("") && jTxtLastName.getText().equals(""))
+            {
+            errorMessage+=">Either a First name or last name should be present.\n\t";
+            showErrorMessage=true;
+            }
+            if(jTxtNoOfBedrooms.getText().equals(""))
+            {
+            errorMessage+=">Number of bedrooms should be specified.\n\t";
+            showErrorMessage=true;
+            }
+            if(jTxtPrice.getText().equals(""))
+            {
+            errorMessage+=">Price of the house should be specified.\n\t";
+            showErrorMessage=true;
+            }
+            if(jTxtSqFeet.getText().equals(""))
+            {
+            errorMessage+=">Size of the house in sq. feet should be specified.\n\t";
+            showErrorMessage=true;
+            }
+            
+            if(showErrorMessage)
+            {
+            JOptionPane.showMessageDialog(rootPane, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+           
+            }
+            else
+            {
+            /*int dialogResult = JOptionPane.showConfirmDialog (null, "Would You Like to Save your Previous Note First?","Warning",dialogButton);
+if(dialogResult == JOptionPane.YES_OPTION)*/    
             house = getHouse();
+            
             if (list.isThere(house)) {
-                JOptionPane.showMessageDialog(rootPane, "Lot number you specified already in use.");
+                
+                if(JOptionPane.showConfirmDialog (rootPane, "Lot Number specified already exists. \nDo you want to update Lot Number " + jTxtLotNo.getText()+"?","Warning",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                {
+                
+                }
             } else {
                 list.insert(house);
                 JOptionPane.showMessageDialog(rootPane, "All details saved.");
                 PopulateTheTable();
+            }
             }
         } catch (NumberFormatException badHouseData) {
             // Text field info incorrectly formated
