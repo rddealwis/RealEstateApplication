@@ -139,6 +139,11 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
         ));
         jTableEstateInfo.setGridColor(new java.awt.Color(0, 204, 204));
         jTableEstateInfo.setSelectionBackground(new java.awt.Color(0, 153, 204));
+        jTableEstateInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableEstateInfoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableEstateInfo);
 
         jBtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -723,6 +728,11 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
         SaveToXML();
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void jTableEstateInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEstateInfoMouseClicked
+        // TODO add your handling code here:
+        jTableTojTextFields();
+    }//GEN-LAST:event_jTableEstateInfoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
@@ -917,4 +927,46 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
         node.appendChild(doc.createTextNode(value));
         return node;
     }
+    
+    
+    private void jTableTojTextFields() {
+        try{
+        int selectedRowIndex = jTableEstateInfo.getSelectedRow();
+Object lastName;
+      Object firstName;
+      Object lotNumber;
+      Object price;
+      Object squareFeet;
+      Object bedRooms;
+      
+      lotNumber = jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 0);
+      firstName = jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 1);
+      lastName = jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 2);
+      price = (jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 3));
+      squareFeet = (jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 3));
+      bedRooms = (jTableEstateInfo.getModel().getValueAt(selectedRowIndex, 3));
+        
+        
+        
+        jTxtLotNo.setText(Integer.toString((int) lotNumber));
+        jTxtFirstName.setText((String) firstName);
+        jTxtLastName.setText((String) lastName);
+        jTxtPrice.setText(Integer.toString((int) price));
+        jTxtSqFeet.setText(Integer.toString((int) squareFeet));
+        jTxtNoOfBedrooms.setText(Integer.toString((int) bedRooms));
+        }
+        catch(Exception e)
+        {JOptionPane.showMessageDialog(rootPane, e.getMessage());}
+        
+        
+        
+        /*jTxtLotNo.setText(Integer.toString(house.lotNumber()));
+      jTxtFirstName.setText(house.firstName());
+      jTxtLastName.setText(house.lastName());
+      jTxtPrice.setText(Integer.toString(house.price()));
+      jTxtSqFeet.setText(Integer.toString(house.squareFeet()));
+      jTxtNoOfBedrooms.setText(Integer.toString(house.bedRooms()));*/
+    }
+
+    
 }
