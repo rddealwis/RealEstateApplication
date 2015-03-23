@@ -1,21 +1,13 @@
-//----------------------------------------------------------------------------
-// HouseFile.java by Dale/Joyce/Weems Chapter 3
-//
-// Manages file "houses.dat" of real estate information
-//----------------------------------------------------------------------------
 package Classes.RealEstate;
 
-import java.io.*;
-import javax.swing.JOptionPane;
 import org.w3c.dom.*;
 
 
-public class HouseFile // Manages file "houses.dat" of real estate information
+public class HouseFile 
 {
 
-   public static ListHouse getNextHouse(Node nNode) throws IOException // Gets and returns house information from the house info file
-    // Precondition: inFile is open and holds more house information
-    {
+   public static ListHouse getNextHouse(Node nNode) 
+   {
         try
         {
         int lotNumber = 0;

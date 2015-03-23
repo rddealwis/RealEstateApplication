@@ -206,10 +206,10 @@ public class frmChangePassword extends javax.swing.JInternalFrame {
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
         try {
             userLogin = ob.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
-            if (list.isThere(userLogin)) {
+            if (list.isThereHouse(userLogin)) {
                 JOptionPane.showMessageDialog(rootPane, "User name already in use");
             } else {
-                list.insert(userLogin);
+                list.insertHouse(userLogin);
                 ob.saveToUserLoginXML();
                 JOptionPane.showMessageDialog(rootPane, "User credentials added to list");
             }

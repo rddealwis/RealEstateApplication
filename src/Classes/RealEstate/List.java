@@ -1,79 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes.RealEstate;
 
-/**
- *
- * @author Ras
- */
 public abstract class List {
 
-    protected Listable[] list;          // Array to hold this list’s elements
-    public int numItems;               // Number of elements on this list
-    protected int currentPos;           // Current position for iteration
+    protected Listable[] houseList;          
+    public int numOfItems;               
+    protected int currentPosition;           
 
-    public List(int maxItems) // Instantiates and returns a reference to an empty list object with room for maxItems elements
+    public List(int maxItems) 
     {
-        numItems = 0;
-        list = new Listable[maxItems];
+        numOfItems = 0;
+        houseList = new Listable[maxItems];
     }
 
-    public int lengthIs() // Returns the number of elements on this list 
+    public int listLengthIs() 
     {
-        return numItems;
+        return numOfItems;
     }
 
-    public abstract boolean isThere(Listable item);
-// Returns true if an element with the same key as item is on this list; 
-// otherwise, returns false
+    public abstract boolean isThereHouse(Listable item);
 
-    public abstract Listable retrieve(Listable item);
-// Returns a copy of the list element with the same key as item
+    public abstract Listable retrieveHouse(Listable item);
 
-    public abstract void insert(Listable item);
-// Adds a copy of item to this list 
+    public abstract void insertHouse(Listable item);
 
-    public abstract void delete(Listable item);
-// Deletes the element with the same key as item from this list 
+    public abstract void deleteHouse(Listable item);
 
-    public void reset() // Initializes current position for an iteration through this list
+    public void resetHouseList() 
     {
-        currentPos = 0;
+        currentPosition = 0;
     }
 
-    public Listable getNextItem(boolean isNextButton) // Returns copy of the next element on this list 
+    public Listable getNextItem(boolean isNextButton) 
     {
-        Listable next = list[currentPos];
-        if (currentPos == numItems - 1) {
-            currentPos = 0;
+        Listable next = houseList[currentPosition];
+        if (currentPosition == numOfItems - 1) {
+            currentPosition = 0;
         } else {
-            currentPos++;
+            currentPosition++;
         }
         if(isNextButton)
         {
-        next = list[currentPos];
+        next = houseList[currentPosition];
         }
         return next.copy();
     }
-    public Listable getPreviousItem(boolean isPreviousButton) // Returns copy of the next element on this list 
+    public Listable getPreviousItem(boolean isPreviousButton) 
     {
-        Listable previous = list[currentPos];
-        if (currentPos == 1 ) {
-            currentPos = 0;
+        Listable previous = houseList[currentPosition];
+        if (currentPosition == 1 ) {
+            currentPosition = 0;
         } 
-        else if (currentPos==0)
+        else if (currentPosition==0)
         {
-        currentPos=numItems - 1;
+        currentPosition=numOfItems - 1;
         }
         else {
-            currentPos--;
+            currentPosition--;
         }
         if(isPreviousButton)
         {
-        previous = list[currentPos];
+        previous = houseList[currentPosition];
         }
         return previous.copy();
     }

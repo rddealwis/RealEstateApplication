@@ -1,12 +1,7 @@
-//----------------------------------------------------------------------------
-// ListHouse.java by Dale/Joyce/Weems Chapter 3
-//
-// Provides elements for a list of house information
-//----------------------------------------------------------------------------
 package Classes.RealEstate;
 
 public class ListHouse implements Listable {
-// House information
+
 
     private String lastName;
     private String firstName;
@@ -25,18 +20,19 @@ public class ListHouse implements Listable {
         this.bedRooms = bedRooms;
     }
 
-    public Listable copy() // Returns a copy of this ListHouse
+    @Override
+    public Listable copy() 
     {
         ListHouse result = new ListHouse(lastName, firstName, lotNumber, price, squareFeet, bedRooms);
         return result;
     }
 
-    public int compareTo(Listable otherListHouse) // Houses are compared based on their lot numbers
+    @Override
+    public int compareTo(Listable otherListHouse) 
     {
         ListHouse other = (ListHouse) otherListHouse;
         return (this.lotNumber - other.lotNumber);
     }
-// Observers
 
     public String lastName() {
         return lastName;

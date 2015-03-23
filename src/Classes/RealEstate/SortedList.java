@@ -1,107 +1,101 @@
-//----------------------------------------------------------------------------
-// SortedList.java by Dale/Joyce/Weems Chapter 3
-//
-// Completes the definition of the List class under the assumption
-// that the list is kept sorted
-//----------------------------------------------------------------------------
 package Classes.RealEstate;
-
-import javax.swing.JOptionPane;
 
 public class SortedList extends List {
 
-    public SortedList(int maxItems) // Instantiates and returns a reference to an empty list object
-    // with room for maxItems elements
+    public SortedList(int maxItems) 
     {
         super(maxItems);
     }
 
-    public SortedList() // Instantiates and returns a reference to an empty list object
-    // with room for 100 elements
+    public SortedList() 
     {
         super(100);
     }
 
-    public boolean isThere(Listable item) // Returns true if an element with the same key as item is on this list;
-    // otherwise, returns false
+    @Override
+    public boolean isThereHouse(Listable item) 
     {
-        int compareResult;
+        int compare;
         int midPoint;
-        int first = 0;
-        int last = numItems - 1;
-        boolean moreToSearch = (first <= last);
-        boolean found = false;
-        while (moreToSearch && !found) {
-            midPoint = (first + last) / 2;
-            compareResult = item.compareTo(list[midPoint]);
-            if (compareResult == 0) {
-                found = true;
-            } else if (compareResult < 0) // item is less than element at location
+        int firstHouse = 0;
+        int lastHouse = numOfItems - 1;
+        boolean searchMore = (firstHouse <= lastHouse);
+        boolean foundHouse = false;
+        while (searchMore && !foundHouse) {
+            midPoint = (firstHouse + lastHouse) / 2;
+            compare = item.compareTo(houseList[midPoint]);
+            if (compare == 0) {
+                foundHouse = true;
+            } else if (compare < 0) 
             {
-                last = midPoint - 1;
-                moreToSearch = (first <= last);
-            } else // item is greater than element at location
+                lastHouse = midPoint - 1;
+                searchMore = (firstHouse <= lastHouse);
+            } else 
             {
-                first = midPoint + 1;
-                moreToSearch = (first <= last);
+                firstHouse = midPoint + 1;
+                searchMore = (firstHouse <= lastHouse);
             }
         }
-        return found;
+        return foundHouse;
     }
 
-    public Listable retrieve(Listable item) // Returns a copy of the list element with the same key as item
+    @Override
+    public Listable retrieveHouse(Listable item) 
     {
-        int compareResult;
-        int first = 0;
-        int last = numItems - 1;
-        int midPoint = (first + last) / 2;
-        boolean found = false;
-        while (!found) {
-            midPoint = (first + last) / 2;
-            compareResult = item.compareTo(list[midPoint]);
-            if (compareResult == 0) {
-                found = true;
-            } else if (compareResult < 0) // item is less than element at location
+        int compare;
+        int firstHouse = 0;
+        int lastHouse = numOfItems - 1;
+        int midPoint = (firstHouse + lastHouse) / 2;
+        boolean foundHouse = false;
+        while (!foundHouse) {
+            midPoint = (firstHouse + lastHouse) / 2;
+            compare = item.compareTo(houseList[midPoint]);
+            if (compare == 0) {
+                foundHouse = true;
+            } else if (compare < 0) 
             {
-                last = midPoint - 1;
-            } else // item is greater than element at location
+                lastHouse = midPoint - 1;
+            } else 
             {
-                first = midPoint + 1;
+                firstHouse = midPoint + 1;
             }
         }
-        return list[midPoint].copy();
+        return houseList[midPoint].copy();
     }
 
-    public void insert(Listable item) // Adds a copy of item to this list
+    @Override
+    public void insertHouse(Listable item) 
     {
-        int location = 0;
-        boolean moreToSearch = (location < numItems);
-        while (moreToSearch) {
-            if (item.compareTo(list[location]) < 0) // item is less
+        int currentLocation = 0;
+        boolean searchMore = (currentLocation < numOfItems);
+        while (searchMore) {
+            if (item.compareTo(houseList[currentLocation]) < 0) 
             {
-                moreToSearch = false;
-            } else // item is more
+                searchMore = false;
+            } else 
             {
-                location++;
-                moreToSearch = (location < numItems);
+                currentLocation++;
+                searchMore = (currentLocation < numOfItems);
             }
         }
-        for (int index = numItems; index > location; index--) {
-            list[index] = list[index - 1];
+        for (int index = numOfItems; index > currentLocation; index--) {
+            houseList[index] = houseList[index - 1];
         }
-        list[location] = item.copy();
-        numItems++;
+        houseList[currentLocation] = item.copy();
+        numOfItems++;
     }
 
-    public void delete(Listable item) // Deletes the element that matches item from this list
+    
+    @Override
+    public void deleteHouse(Listable item) 
     {
-        int location = 0;
-        while (item.compareTo(list[location]) != 0) {
-            location++;
+        int currentLocation = 0;
+        while (item.compareTo(houseList[currentLocation]) != 0) {
+            currentLocation++;
         }
-        for (int index = location + 1; index < numItems; index++) {
-            list[index - 1] = list[index];
+        for (int index = currentLocation + 1; index < numOfItems; index++) {
+            houseList[index - 1] = houseList[index];
         }
-        numItems--;
+        numOfItems--;
     }
 }

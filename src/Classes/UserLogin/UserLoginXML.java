@@ -44,7 +44,7 @@ public class UserLoginXML {
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     userLogin = UserLoginFile.getNextUserLogin(nNode);
-                    list.insert(userLogin);
+                    list.insertHouse(userLogin);
                 }
             }
 
@@ -70,7 +70,7 @@ public class UserLoginXML {
             //append root element to document
             doc.appendChild(rootElement);
  
-            while (count < list.lengthIs()) 
+            while (count < list.listLengthIs()) 
             {
                 ListUserLogin userLogin = (ListUserLogin) list.getNextItem(false);
                 rootElement.appendChild(getUserLogin(doc, userLogin.userName(), userLogin.password()));

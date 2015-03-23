@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Interfaces;
 
 import Classes.General.Button;
@@ -19,10 +13,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import org.w3c.dom.*;
 
-/**
- *
- * @author Ras
- */
 public class frmRealEstate extends javax.swing.JInternalFrame {
 
     private static frmRealEstate instance;
@@ -40,14 +30,13 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
      * Creates new form frmRealEstate
      */
     
-    private String path= "file.xml";
+    private final String path= "file.xml";
     
     private static SortedList list = new SortedList();
     private ListHouse house;
     
     public frmRealEstate() {
-        initComponents();
-        //this.setResizable(false);        
+        initComponents();      
         loadTheXMLFile();
         this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/RealEstate.png")));
     }
@@ -482,17 +471,9 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnSaveMouseExited
 
     private void jBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSaveActionPerformed
-/*house = getHouse();
-            if (list.isThere(house)) {
-                list.delete(house);
-                JOptionPane.showMessageDialog(rootPane, "Lot Number "+house.lotNumber() +" is deleted.");
-                list.reset();
-                house = (ListHouse) list.getNextItem(false);
-                showHouse(house);
-                PopulateTheTable();*/        
+   
         String errorMessage="Please check the following:\n\t";
         Boolean showErrorMessage=false;
-        //Boolean showErrorMessage1=jTxtLotNo.toString().isEmpty();
         try {
             if(jTxtLotNo.getText().equals(""))
             {
@@ -527,28 +508,26 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
             }
             else
             {
-            /*int dialogResult = JOptionPane.showConfirmDialog (null, "Would You Like to Save your Previous Note First?","Warning",dialogButton);
-if(dialogResult == JOptionPane.YES_OPTION)*/    
             house = getHouse();
             
-            if (list.isThere(house)) {
+            if (list.isThereHouse(house)) {
                 
                 if(JOptionPane.showConfirmDialog (rootPane, "Lot Number specified already exists. \nDo you want to update Lot Number " + jTxtLotNo.getText()+"?","Warning",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                 {
-                list.delete(house);
-                list.reset();
-                list.insert(house);
+                list.deleteHouse(house);
+                list.resetHouseList();
+                list.insertHouse(house);
                 JOptionPane.showMessageDialog(rootPane, "House details with Lot Number " + jTxtLotNo.getText()+" is successfully updated.");
                 PopulateTheTable();
                 }
             } else {
-                list.insert(house);
+                list.insertHouse(house);
                 JOptionPane.showMessageDialog(rootPane, "House details with Lot Number " + jTxtLotNo.getText()+" is successfully saved.");
                 PopulateTheTable();
             }
             }
         } catch (NumberFormatException badHouseData) {
-            // Text field info incorrectly formated
+            
             JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");
         }
     }//GEN-LAST:event_jBtnSaveActionPerformed
@@ -564,7 +543,7 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
     }//GEN-LAST:event_jBtnResetMouseExited
 
     private void jBtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnResetActionPerformed
-        list.reset();
+        list.resetHouseList();
         house = (ListHouse) list.getNextItem(false);
         showHouse(house);
     }//GEN-LAST:event_jBtnResetActionPerformed
@@ -609,8 +588,8 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
 
             house = new ListHouse("", "", lotNumber, 0, 0, 0);
 
-            if (list.isThere(house)) {
-                house = (ListHouse) list.retrieve(house);
+            if (list.isThereHouse(house)) {
+                house = (ListHouse) list.retrieveHouse(house);
                 showHouse(house);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");
@@ -633,10 +612,10 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
     private void jBtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDeleteActionPerformed
         try {
             house = getHouse();
-            if (list.isThere(house)) {
-                list.delete(house);
+            if (list.isThereHouse(house)) {
+                list.deleteHouse(house);
                 JOptionPane.showMessageDialog(rootPane, "Lot Number "+house.lotNumber() +" is deleted.");
-                list.reset();
+                list.resetHouseList();
                 house = (ListHouse) list.getNextItem(false);
                 showHouse(house);
                 PopulateTheTable();
@@ -644,7 +623,7 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
                 JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");
             }
         } catch (NumberFormatException badHouseData) {
-            // Text field info incorrectly formated
+            
             JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");
         }
     }//GEN-LAST:event_jBtnDeleteActionPerformed
@@ -690,7 +669,7 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
     }//GEN-LAST:event_jBtnPopulateMouseExited
 
     private void jBtnPopulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPopulateActionPerformed
-        if (list.lengthIs() != 0) {
+        if (list.listLengthIs() != 0) {
             house = (ListHouse) list.getNextItem(false);
             showHouse(house);
 
@@ -785,7 +764,7 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
                //JOptionPane.showMessageDialog(rootPane,"\nCurrent Element :" + nNode.getNodeName());
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                house = HouseFile.getNextHouse(nNode);
-               list.insert(house);
+               list.insertHouse(house);
                //			JOptionPane.showMessageDialog(rootPane,xmlValue);
             }
          }
@@ -810,11 +789,11 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
    {
       ListHouse house;
       int count = 0;
-      list.reset();
+      list.resetHouseList();
       Object[] columnNames = {"Lot Number", "First Name", "Last Name", "Price", "Square Feet", "No of Bedrooms"};
       DefaultTableModel model = new DefaultTableModel(new Object[0][0], columnNames);
       
-      while (count <= list.lengthIs() - 1) 
+      while (count <= list.listLengthIs() - 1) 
       {
          Object[] o = new Object[6];
          
@@ -829,7 +808,7 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
          model.addRow(o);
          count++;
       }
-      list.reset();
+      list.resetHouseList();
       jTableEstateInfo.setModel(model);
    }
 
@@ -862,33 +841,27 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
-            //add elements to Document
-            Element rootElement =
-                doc.createElementNS("http://www.InfinityRealEstates.com/house", "Houses");
-            //append root element to document
+            
+            Element rootElement = doc.createElementNS("http://www.InfinityRealEstates.com/house", "Houses");
+            
             doc.appendChild(rootElement);
  
-            while(count<list.lengthIs()){
+            while(count<list.listLengthIs()){
             ListHouse house = (ListHouse) list.getNextItem(false);
             rootElement.appendChild(getHouse(doc, house.lotNumber(), house.firstName(), house.lastName(), house.price(), house.squareFeet(), house.bedRooms()));
             count++;
             }
  
-            //for output to file, console
+            
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            //for pretty print
+            
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
  
-            //write to console or file
-            //StreamResult console = new StreamResult(System.out);
             StreamResult file = new StreamResult(new File(path));
  
-            //write data
-            //transformer.transform(source, console);
             transformer.transform(source, file);
-            //JOptionPane.showMessageDialog(rootPane,"File saved!");
  
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
@@ -900,21 +873,12 @@ if(dialogResult == JOptionPane.YES_OPTION)*/
     
     Element house = doc.createElement("House");
 
-        //set id attribute
+        
         house.setAttribute("lotNumber", Integer.toString(lotNumber));
- 
-        //create name element
         house.appendChild(getHouseElements(doc, "firstName", firstName));
- 
-        //create age element
         house.appendChild(getHouseElements(doc, "lastName", lastName));
- 
-        //create role element
         house.appendChild(getHouseElements(doc, "price", Integer.toString(price)));
- 
-        //create gender element
         house.appendChild(getHouseElements(doc, "squareFeet", Integer.toString(squareFeet)));
- 
         house.appendChild(getHouseElements(doc, "bedRooms", Integer.toString(bedRooms)));
         
         return house;
@@ -956,16 +920,10 @@ Object lastName;
         jTxtNoOfBedrooms.setText(Integer.toString((int) bedRooms));
         }
         catch(Exception e)
-        {JOptionPane.showMessageDialog(rootPane, e.getMessage());}
+        {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
         
-        
-        
-        /*jTxtLotNo.setText(Integer.toString(house.lotNumber()));
-      jTxtFirstName.setText(house.firstName());
-      jTxtLastName.setText(house.lastName());
-      jTxtPrice.setText(Integer.toString(house.price()));
-      jTxtSqFeet.setText(Integer.toString(house.squareFeet()));
-      jTxtNoOfBedrooms.setText(Integer.toString(house.bedRooms()));*/
     }
 
     

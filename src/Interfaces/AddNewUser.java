@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Interfaces;
 
 import Classes.General.Button;
@@ -13,15 +7,8 @@ import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
-/**
- *
- * @author Ras
- */
 public class AddNewUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddNewUser
-     */
     private ListUserLogin userLogin;
     private static SortedList list = new SortedList();
     Options optionsForm;    
@@ -204,15 +191,14 @@ public class AddNewUser extends javax.swing.JFrame {
       
         try {
             userLogin = ob.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
-            if (list.isThere(userLogin)) {
+            if (list.isThereHouse(userLogin)) {
                 JOptionPane.showMessageDialog(rootPane, "User name already in use");
             } else {
-                list.insert(userLogin);
+                list.insertHouse(userLogin);
                 ob.saveToUserLoginXML();
                 JOptionPane.showMessageDialog(rootPane, "User credentials added to list");
             }
         } catch (NumberFormatException badHouseData) {
-            // Text field info incorrectly formated
             JOptionPane.showMessageDialog(rootPane, "Number? " + badHouseData.getMessage());
         }        
     }//GEN-LAST:event_jBtnSubmitActionPerformed
