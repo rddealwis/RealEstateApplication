@@ -592,7 +592,7 @@ public class frmRealEstate extends javax.swing.JInternalFrame {
                 house = (ListHouse) list.retrieveHouse(house);
                 showHouse(house);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable");
+                JOptionPane.showMessageDialog(rootPane, "Lot Number you specified is unavailable.");
             }
         } catch (NumberFormatException badHouseData) {
             JOptionPane.showMessageDialog(rootPane, "Please specify the Lot Number in correct format. Lot Number contains only numbers.");

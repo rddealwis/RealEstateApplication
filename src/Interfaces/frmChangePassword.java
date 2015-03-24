@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Interfaces;
 
 import Classes.General.Button;
@@ -13,22 +7,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
-/**
- *
- * @author Ras
- */
 public class frmChangePassword extends javax.swing.JInternalFrame {
-    
-    /**
-     * Creates new form frmChangePassword
-     */
-    
+        
     private ListUserLogin userLogin;
     private static SortedList list = new SortedList();
-    UserLoginXML ob = new UserLoginXML();
+    UserLoginXML userLoginXml = new UserLoginXML();
     private static frmChangePassword instance;
    
     public frmChangePassword() {
+        
         initComponents();
         this.setResizable(false);
         this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/Change Password.png")));
@@ -204,13 +191,14 @@ public class frmChangePassword extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBtnSubmitMouseExited
 
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
+        
         try {
-            userLogin = ob.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
+            userLogin = userLoginXml.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
             if (list.isThereHouse(userLogin)) {
                 JOptionPane.showMessageDialog(rootPane, "User name already in use");
             } else {
                 list.insertHouse(userLogin);
-                ob.saveToUserLoginXML();
+                userLoginXml.saveToUserLoginXML();
                 JOptionPane.showMessageDialog(rootPane, "User credentials added to list");
             }
         } catch (NumberFormatException badHouseData) {

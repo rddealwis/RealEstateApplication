@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Interfaces;
 
 import Classes.General.Button;
@@ -12,16 +6,8 @@ import javax.swing.ImageIcon;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
-/**
- *
- * @author Ras
- */
 public class UserLogin extends javax.swing.JFrame {
-
-   /**
-    * Creates new form UserLoginXML
-    */
-      
+    
    private ListUserLogin userLogin;
    Classes.UserLogin.UserLoginXML ob = new Classes.UserLogin.UserLoginXML();
 

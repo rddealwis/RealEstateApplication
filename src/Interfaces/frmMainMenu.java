@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Interfaces;
 
 import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javax.swing.ImageIcon;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
-/**
- *
- * @author Ras
- */
 public class frmMainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMainMenu
-     */
     public frmMainMenu() {
+        
         initComponents();
         this.setResizable(false);        
         setIconImage(new ImageIcon(getClass().getResource("/Images/MainMenu.png")).getImage());
@@ -152,7 +139,7 @@ public class frmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIExitActionPerformed
 
     private void jMIRealEstateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRealEstateActionPerformed
-       
+
         frmRealEstate obj = frmRealEstate.GetInstance();
 
         if (!obj.isVisible()) {
@@ -161,7 +148,7 @@ public class frmMainMenu extends javax.swing.JFrame {
         } else {
             obj.toFront();
         }
-        
+
         try {
             obj.setMaximum(true);
         } catch (PropertyVetoException ex) {
@@ -170,7 +157,7 @@ public class frmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIRealEstateActionPerformed
 
     private void jMIAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAddUserActionPerformed
-  
+
         frmAddNewUser obj = frmAddNewUser.GetInstance();
 
         if (!obj.isVisible()) {
@@ -182,7 +169,7 @@ public class frmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMIAddUserActionPerformed
 
     private void jMIChngPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIChngPwdActionPerformed
-       
+
         frmChangePassword obj = frmChangePassword.GetInstance();
 
         if (!obj.isVisible()) {

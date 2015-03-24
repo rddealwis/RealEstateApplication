@@ -7,16 +7,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
-public class frmAddNewUser extends javax.swing.JInternalFrame {
-
-    
+public class frmAddNewUser extends javax.swing.JInternalFrame {    
     
     private ListUserLogin userLogin;
     private static SortedList list = new SortedList();
-    UserLoginXML ob = new UserLoginXML();
+    UserLoginXML userLoginXml = new UserLoginXML();
     private static frmAddNewUser instance;      
     
     public frmAddNewUser() {
+        
         initComponents();
         this.setResizable(false);
         this.setFrameIcon(new ImageIcon(getClass().getResource("/Images/AddUser.png")));
@@ -182,12 +181,12 @@ public class frmAddNewUser extends javax.swing.JInternalFrame {
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
 
         try {
-            userLogin = ob.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
+            userLogin = userLoginXml.getUserLogin(jTxtUserName.getText(), jTxtNewPwd.getText());
             if (list.isThereHouse(userLogin)) {
                 JOptionPane.showMessageDialog(rootPane, "User name already in use");
             } else {
                 list.insertHouse(userLogin);
-                ob.saveToUserLoginXML();
+                userLoginXml.saveToUserLoginXML();
                 JOptionPane.showMessageDialog(rootPane, "User credentials added to list");
             }
         } catch (NumberFormatException badHouseData) {

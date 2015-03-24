@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes.UserLogin;
 
 import Classes.RealEstate.*;
@@ -14,17 +9,13 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
 
-/**
- *
- * @author Ras
- */
 public class UserLoginXML {
-    
+
     private String path = "userlogindetails.xml";
     private static SortedList list = new SortedList();
 
-    public void loadUserLoginXML() 
-    {
+    public void loadUserLoginXML() {
+        
         ListUserLogin userLogin;
 
         try {
@@ -52,54 +43,53 @@ public class UserLoginXML {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
-    
+
     public void saveToUserLoginXML() {
-       
-        int count=0;
-        
+
+        int count = 0;
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
-        
+
         try {
-            
+
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
             //add elements to Document
             Element rootElement = doc.createElementNS("http://www.InfinityRealEstates.com/UserLogins", "UserLogins");
-            
+
             //append root element to document
             doc.appendChild(rootElement);
- 
-            while (count < list.listLengthIs()) 
-            {
+
+            while (count < list.listLengthIs()) {
                 ListUserLogin userLogin = (ListUserLogin) list.getNextItem(false);
                 rootElement.appendChild(getUserLogin(doc, userLogin.userName(), userLogin.password()));
                 count++;
             }
- 
+
             //for output to file, console
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             //for pretty print
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
- 
+
             //write to console or file
             //StreamResult console = new StreamResult(System.out);
             StreamResult file = new StreamResult(new File(path));
- 
+
             //write data
             //transformer.transform(source, console);
             transformer.transform(source, file);
             //JOptionPane.showMessageDialog(rootPane,"File saved!");
- 
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
-    private static Node getUserLogin(Document doc, String userName, String password)
-    {
+    private static Node getUserLogin(Document doc, String userName, String password) {
+        
         Element login = doc.createElement("Login");
 
         login.setAttribute("UserName", userName);
@@ -107,16 +97,16 @@ public class UserLoginXML {
 
         return login;
     }
-    
-    private static Node getUserLoginElements(Document doc, String name, String value) 
-    {
+
+    private static Node getUserLoginElements(Document doc, String name, String value) {
+        
         Element node = doc.createElement(name);
         node.appendChild(doc.createTextNode(value));
         return node;
     }
-    
-    public ListUserLogin getUserLogin(String uName, String uPwd) 
-    {       
+
+    public ListUserLogin getUserLogin(String uName, String uPwd) {
+        
         String userName;
         String password;
 
