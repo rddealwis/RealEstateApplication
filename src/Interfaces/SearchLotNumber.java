@@ -155,11 +155,11 @@ public class SearchLotNumber extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCloseSearchMouseExited
 
     private void jBtnLotNoSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLotNoSearchActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBtnLotNoSearchActionPerformed
 
     private void jBtnCloseSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCloseSearchActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBtnCloseSearchActionPerformed
 
     /**
