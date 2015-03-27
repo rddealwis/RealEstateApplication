@@ -110,6 +110,11 @@ public class frmMainMenu extends javax.swing.JFrame {
 
         jMIAboutUs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMIAboutUs.setText("About Us");
+        jMIAboutUs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAboutUsActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMIAboutUs);
 
         jMainMenuBar.add(jMenuHelp);
@@ -179,6 +184,18 @@ public class frmMainMenu extends javax.swing.JFrame {
             obj.toFront();
         }
     }//GEN-LAST:event_jMIChngPwdActionPerformed
+
+    private void jMIAboutUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAboutUsActionPerformed
+        
+        frmAboutUs obj = frmAboutUs.GetInstance();
+
+        if (!obj.isVisible()) {
+            jMainDesktopPane.add(obj);
+            obj.setVisible(true);
+        } else {
+            obj.toFront();
+        }
+    }//GEN-LAST:event_jMIAboutUsActionPerformed
 
     /**
      * @param args the command line arguments
